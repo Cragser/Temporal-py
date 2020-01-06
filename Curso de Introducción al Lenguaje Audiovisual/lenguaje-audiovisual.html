@@ -1,0 +1,3341 @@
+<!DOCTYPE html>
+<html lang="en" data-cast-api-enabled="true">
+
+<head>
+  <meta charset="UTF-8" />
+  <script type="text/javascript">
+    (window.NREUM || (NREUM = {})).loader_config = {
+      licenseKey: "e743ae64e1",
+      applicationID: "153189779"
+    };
+    window.NREUM || (NREUM = {}), __nr_require = function (n, e, t) {
+      function r(t) {
+        if (!e[t]) {
+          var i = e[t] = {
+            exports: {}
+          };
+          n[t][0].call(i.exports, function (e) {
+            var i = n[t][1][e];
+            return r(i || e)
+          }, i, i.exports)
+        }
+        return e[t].exports
+      }
+      if ("function" == typeof __nr_require) return __nr_require;
+      for (var i = 0; i < t.length; i++) r(t[i]);
+      return r
+    }({
+      1: [function (n, e, t) {
+        function r() {}
+
+        function i(n, e, t) {
+          return function () {
+            return o(n, [u.now()].concat(f(arguments)), e ? null : this, t), e ? void 0 : this
+          }
+        }
+        var o = n("handle"),
+          a = n(4),
+          f = n(5),
+          c = n("ee").get("tracer"),
+          u = n("loader"),
+          s = NREUM;
+        "undefined" == typeof window.newrelic && (newrelic = s);
+        var p = ["setPageViewName", "setCustomAttribute", "setErrorHandler", "finished", "addToTrace",
+            "inlineHit", "addRelease"
+          ],
+          d = "api-",
+          l = d + "ixn-";
+        a(p, function (n, e) {
+            s[e] = i(d + e, !0, "api")
+          }), s.addPageAction = i(d + "addPageAction", !0), s.setCurrentRouteName = i(d + "routeName", !0), e
+          .exports = newrelic, s.interaction = function () {
+            return (new r).get()
+          };
+        var m = r.prototype = {
+          createTracer: function (n, e) {
+            var t = {},
+              r = this,
+              i = "function" == typeof e;
+            return o(l + "tracer", [u.now(), n, t], r),
+              function () {
+                if (c.emit((i ? "" : "no-") + "fn-start", [u.now(), r, i], t), i) try {
+                  return e.apply(this, arguments)
+                } catch (n) {
+                  throw c.emit("fn-err", [arguments, this, n], t), n
+                } finally {
+                  c.emit("fn-end", [u.now()], t)
+                }
+              }
+          }
+        };
+        a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","), function (n, e) {
+          m[e] = i(l + e)
+        }), newrelic.noticeError = function (n, e) {
+          "string" == typeof n && (n = new Error(n)), o("err", [n, u.now(), !1, e])
+        }
+      }, {}],
+      2: [function (n, e, t) {
+        function r(n, e) {
+          var t = n.getEntries();
+          t.forEach(function (n) {
+            "first-paint" === n.name ? a("timing", ["fp", Math.floor(n.startTime)]) :
+              "first-contentful-paint" === n.name && a("timing", ["fcp", Math.floor(n.startTime)])
+          })
+        }
+
+        function i(n) {
+          if (n instanceof c && !s) {
+            var e, t = Math.round(n.timeStamp);
+            e = t > 1e12 ? Date.now() - t : f.now() - t, s = !0, a("timing", ["fi", t, {
+              type: n.type,
+              fid: e
+            }])
+          }
+        }
+        if (!("init" in NREUM && "page_view_timing" in NREUM.init && "enabled" in NREUM.init.page_view_timing &&
+            NREUM.init.page_view_timing.enabled === !1)) {
+          var o, a = n("handle"),
+            f = n("loader"),
+            c = NREUM.o.EV;
+          if ("PerformanceObserver" in window && "function" == typeof window.PerformanceObserver) {
+            o = new PerformanceObserver(r);
+            try {
+              o.observe({
+                entryTypes: ["paint"]
+              })
+            } catch (u) {}
+          }
+          if ("addEventListener" in document) {
+            var s = !1,
+              p = ["click", "keydown", "mousedown", "pointerdown", "touchstart"];
+            p.forEach(function (n) {
+              document.addEventListener(n, i, !1)
+            })
+          }
+        }
+      }, {}],
+      3: [function (n, e, t) {
+        function r(n, e) {
+          if (!i) return !1;
+          if (n !== i) return !1;
+          if (!e) return !0;
+          if (!o) return !1;
+          for (var t = o.split("."), r = e.split("."), a = 0; a < r.length; a++)
+            if (r[a] !== t[a]) return !1;
+          return !0
+        }
+        var i = null,
+          o = null,
+          a = /Version\/(\S+)\s+Safari/;
+        if (navigator.userAgent) {
+          var f = navigator.userAgent,
+            c = f.match(a);
+          c && f.indexOf("Chrome") === -1 && f.indexOf("Chromium") === -1 && (i = "Safari", o = c[1])
+        }
+        e.exports = {
+          agent: i,
+          version: o,
+          match: r
+        }
+      }, {}],
+      4: [function (n, e, t) {
+        function r(n, e) {
+          var t = [],
+            r = "",
+            o = 0;
+          for (r in n) i.call(n, r) && (t[o] = e(r, n[r]), o += 1);
+          return t
+        }
+        var i = Object.prototype.hasOwnProperty;
+        e.exports = r
+      }, {}],
+      5: [function (n, e, t) {
+        function r(n, e, t) {
+          e || (e = 0), "undefined" == typeof t && (t = n ? n.length : 0);
+          for (var r = -1, i = t - e || 0, o = Array(i < 0 ? 0 : i); ++r < i;) o[r] = n[e + r];
+          return o
+        }
+        e.exports = r
+      }, {}],
+      6: [function (n, e, t) {
+        e.exports = {
+          exists: "undefined" != typeof window.performance && window.performance.timing && "undefined" !=
+            typeof window.performance.timing.navigationStart
+        }
+      }, {}],
+      ee: [function (n, e, t) {
+        function r() {}
+
+        function i(n) {
+          function e(n) {
+            return n && n instanceof r ? n : n ? c(n, f, o) : o()
+          }
+
+          function t(t, r, i, o) {
+            if (!d.aborted || o) {
+              n && n(t, r, i);
+              for (var a = e(i), f = v(t), c = f.length, u = 0; u < c; u++) f[u].apply(a, r);
+              var p = s[y[t]];
+              return p && p.push([b, t, r, a]), a
+            }
+          }
+
+          function l(n, e) {
+            h[n] = v(n).concat(e)
+          }
+
+          function m(n, e) {
+            var t = h[n];
+            if (t)
+              for (var r = 0; r < t.length; r++) t[r] === e && t.splice(r, 1)
+          }
+
+          function v(n) {
+            return h[n] || []
+          }
+
+          function g(n) {
+            return p[n] = p[n] || i(t)
+          }
+
+          function w(n, e) {
+            u(n, function (n, t) {
+              e = e || "feature", y[t] = e, e in s || (s[e] = [])
+            })
+          }
+          var h = {},
+            y = {},
+            b = {
+              on: l,
+              addEventListener: l,
+              removeEventListener: m,
+              emit: t,
+              get: g,
+              listeners: v,
+              context: e,
+              buffer: w,
+              abort: a,
+              aborted: !1
+            };
+          return b
+        }
+
+        function o() {
+          return new r
+        }
+
+        function a() {
+          (s.api || s.feature) && (d.aborted = !0, s = d.backlog = {})
+        }
+        var f = "nr@context",
+          c = n("gos"),
+          u = n(4),
+          s = {},
+          p = {},
+          d = e.exports = i();
+        d.backlog = s
+      }, {}],
+      gos: [function (n, e, t) {
+        function r(n, e, t) {
+          if (i.call(n, e)) return n[e];
+          var r = t();
+          if (Object.defineProperty && Object.keys) try {
+            return Object.defineProperty(n, e, {
+              value: r,
+              writable: !0,
+              enumerable: !1
+            }), r
+          } catch (o) {}
+          return n[e] = r, r
+        }
+        var i = Object.prototype.hasOwnProperty;
+        e.exports = r
+      }, {}],
+      handle: [function (n, e, t) {
+        function r(n, e, t, r) {
+          i.buffer([n], r), i.emit(n, e, t)
+        }
+        var i = n("ee").get("handle");
+        e.exports = r, r.ee = i
+      }, {}],
+      id: [function (n, e, t) {
+        function r(n) {
+          var e = typeof n;
+          return !n || "object" !== e && "function" !== e ? -1 : n === window ? 0 : a(n, o, function () {
+            return i++
+          })
+        }
+        var i = 1,
+          o = "nr@id",
+          a = n("gos");
+        e.exports = r
+      }, {}],
+      loader: [function (n, e, t) {
+        function r() {
+          if (!x++) {
+            var n = E.info = NREUM.info,
+              e = l.getElementsByTagName("script")[0];
+            if (setTimeout(s.abort, 3e4), !(n && n.licenseKey && n.applicationID && e)) return s.abort();
+            u(y, function (e, t) {
+              n[e] || (n[e] = t)
+            }), c("mark", ["onload", a() + E.offset], null, "api");
+            var t = l.createElement("script");
+            t.src = "https://" + n.agent, e.parentNode.insertBefore(t, e)
+          }
+        }
+
+        function i() {
+          "complete" === l.readyState && o()
+        }
+
+        function o() {
+          c("mark", ["domContent", a() + E.offset], null, "api")
+        }
+
+        function a() {
+          return O.exists && performance.now ? Math.round(performance.now()) : (f = Math.max((new Date)
+          .getTime(), f)) - E.offset
+        }
+        var f = (new Date).getTime(),
+          c = n("handle"),
+          u = n(4),
+          s = n("ee"),
+          p = n(3),
+          d = window,
+          l = d.document,
+          m = "addEventListener",
+          v = "attachEvent",
+          g = d.XMLHttpRequest,
+          w = g && g.prototype;
+        NREUM.o = {
+          ST: setTimeout,
+          SI: d.setImmediate,
+          CT: clearTimeout,
+          XHR: g,
+          REQ: d.Request,
+          EV: d.Event,
+          PR: d.Promise,
+          MO: d.MutationObserver
+        };
+        var h = "" + location,
+          y = {
+            beacon: "bam.nr-data.net",
+            errorBeacon: "bam.nr-data.net",
+            agent: "js-agent.newrelic.com/nr-1158.min.js"
+          },
+          b = g && w && w[m] && !/CriOS/.test(navigator.userAgent),
+          E = e.exports = {
+            offset: f,
+            now: a,
+            origin: h,
+            features: {},
+            xhrWrappable: b,
+            userAgent: p
+          };
+        n(1), n(2), l[m] ? (l[m]("DOMContentLoaded", o, !1), d[m]("load", r, !1)) : (l[v]("onreadystatechange",
+          i), d[v]("onload", r)), c("mark", ["firstbyte", f], null, "api");
+        var x = 0,
+          O = n(6)
+      }, {}],
+      "wrap-function": [function (n, e, t) {
+        function r(n) {
+          return !(n && n instanceof Function && n.apply && !n[a])
+        }
+        var i = n("ee"),
+          o = n(5),
+          a = "nr@original",
+          f = Object.prototype.hasOwnProperty,
+          c = !1;
+        e.exports = function (n, e) {
+          function t(n, e, t, i) {
+            function nrWrapper() {
+              var r, a, f, c;
+              try {
+                a = this, r = o(arguments), f = "function" == typeof t ? t(r, a) : t || {}
+              } catch (u) {
+                d([u, "", [r, a, i], f])
+              }
+              s(e + "start", [r, a, i], f);
+              try {
+                return c = n.apply(a, r)
+              } catch (p) {
+                throw s(e + "err", [r, a, p], f), p
+              } finally {
+                s(e + "end", [r, a, c], f)
+              }
+            }
+            return r(n) ? n : (e || (e = ""), nrWrapper[a] = n, p(n, nrWrapper), nrWrapper)
+          }
+
+          function u(n, e, i, o) {
+            i || (i = "");
+            var a, f, c, u = "-" === i.charAt(0);
+            for (c = 0; c < e.length; c++) f = e[c], a = n[f], r(a) || (n[f] = t(a, u ? f + i : i, o, f))
+          }
+
+          function s(t, r, i) {
+            if (!c || e) {
+              var o = c;
+              c = !0;
+              try {
+                n.emit(t, r, i, e)
+              } catch (a) {
+                d([a, t, r, i])
+              }
+              c = o
+            }
+          }
+
+          function p(n, e) {
+            if (Object.defineProperty && Object.keys) try {
+              var t = Object.keys(n);
+              return t.forEach(function (t) {
+                Object.defineProperty(e, t, {
+                  get: function () {
+                    return n[t]
+                  },
+                  set: function (e) {
+                    return n[t] = e, e
+                  }
+                })
+              }), e
+            } catch (r) {
+              d([r])
+            }
+            for (var i in n) f.call(n, i) && (e[i] = n[i]);
+            return e
+          }
+
+          function d(e) {
+            try {
+              n.emit("internal-error", e)
+            } catch (t) {}
+          }
+          return n || (n = i), t.inPlace = u, t.flag = a, t
+        }
+      }, {}]
+    }, {}, ["loader"]);
+  </script>
+  <script type="text/javascript">
+    window.NREUM || (NREUM = {});
+    NREUM.info = {
+      "beacon": "bam.nr-data.net",
+      "errorBeacon": "bam.nr-data.net",
+      "licenseKey": "e743ae64e1",
+      "applicationID": "153189779",
+      "transactionName": "NlcHZBNYDUNZAUEKXQ8dI0UPWhdZVwwaDEAGUwtZG1gXWVcMRk1ECFcSQ1ttCl1dDlwNVzdbAEdPXgZE",
+      "queueTime": 0,
+      "applicationTime": 1369,
+      "agent": ""
+    }
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <link rel="shortcut icon" href="https://static.platzi.com/static/images/logos/platzi_favicon.01ca534ca7d3.png" />
+  <link rel="icon" sizes="192x192" href="https://static.platzi.com/static/images/logos/platzi_favicon.01ca534ca7d3.png">
+  <meta name="theme-color" content="#283C48" />
+  <meta name="description"
+    content="Conoce los conceptos, herramientas y técnicas del lenguaje audiovisual. Aprende cuáles son los procesos y momentos de la producción y domina la narrativa ideal para crear productos audiovisuales.">
+  <meta name="apple-itunes-app" content="app-id=1106678260" /><!-- og tags Facebook -->
+  <meta property="fb:app_id" content="263680607075199" />
+  <meta property="fb:admins" content="1030603473" />
+  <meta property="og:description"
+    content="Conoce los conceptos, herramientas y técnicas del lenguaje audiovisual. Aprende cuáles son los procesos y momentos de la producción y domina la narrativa ideal para crear productos audiovisuales." />
+  <meta property="og:title" content="Curso de Introducción al Lenguaje Audiovisual " />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://https://platzi.com/clases/lenguaje-audiovisual/" />
+  <meta property="og:image" content="https://static.platzi.com/media/courses/OG-Intro-Lenguaje-Audiovisual.jpg" />
+  <meta property="og:site_name" content="platzi.com" /><!-- og tags Google+ -->
+  <meta itemprop="description"
+    content="Conoce los conceptos, herramientas y técnicas del lenguaje audiovisual. Aprende cuáles son los procesos y momentos de la producción y domina la narrativa ideal para crear productos audiovisuales." />
+  <!-- Twitter Cards -->
+  <meta property="twitter:account_id" content="4503599630205252" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@Platzi" />
+  <meta name="twitter:title" content="Curso de Introducción al Lenguaje Audiovisual" />
+  <meta name="twitter:description"
+    content="Conoce los conceptos, herramientas y técnicas del lenguaje audiovisual. Aprende cuáles son los procesos y momentos de la producción y domina la narrativa ideal para crear productos audiovisuales." />
+  <meta name="twitter:creator" content="@Platzi" />
+  <meta name="twitter:image:src" content="https://static.platzi.com/media/courses/OG-Intro-Lenguaje-Audiovisual.jpg" />
+  <meta name="twitter:domain" content="platzi.com" /><!-- SEO -->
+  <link rel="canonical" href="https://platzi.com/clases/lenguaje-audiovisual/" />
+  <title>Curso de Introducción al Lenguaje Audiovisual</title>
+  <link rel="shortcut icon" href="//static.platzi.com/media/favicons/platzi_favicon.png" />
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,400italic,700,300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,800italic,400,300,600,700,800'
+    rel='stylesheet' type='text/css'>
+  <link type="text/css" href="https://static.platzi.com/static/css/core/header-v2.55cf4122d4a4591da8ac.css.gz"
+    rel="stylesheet" />
+  <link type="text/css" href="https://static.platzi.com/static/css/d/contact-modal.f5360164282fd7c0548c.css.gz"
+    rel="stylesheet" /><!-- Start of Segment Code -->
+  <script>
+    var SEGMENT_KEY = "0a8VbteMgh6wQlyHSy2ojHajq5eC8GOb";
+    ! function () {
+      var analytics = window.analytics = window.analytics || [];
+      if (!analytics.initialize)
+        if (analytics.invoked) window.console && console.error && console.error("Segment snippet included twice.");
+        else {
+          analytics.invoked = !0;
+          analytics.methods = ["trackSubmit", "trackClick", "trackLink", "trackForm", "pageview", "identify", "reset",
+            "group", "track", "ready", "alias", "page", "once", "off", "on"
+          ];
+          analytics.factory = function (t) {
+            return function () {
+              var e = Array.prototype.slice.call(arguments);
+              e.unshift(t);
+              analytics.push(e);
+              return analytics
+            }
+          };
+          for (var t = 0; t < analytics.methods.length; t++) {
+            var e = analytics.methods[t];
+            analytics[e] = analytics.factory(e)
+          }
+          analytics.load = function (t) {
+            var e = document.createElement("script");
+            e.type = "text/javascript";
+            e.async = !0;
+            e.src = ("https:" === document.location.protocol ? "https://" : "http://") +
+              "cdn.segment.com/analytics.js/v1/" + t + "/analytics.min.js";
+            var n = document.getElementsByTagName("script")[0];
+            n.parentNode.insertBefore(e, n)
+          };
+          analytics.SNIPPET_VERSION = "3.1.0";
+          analytics.load(SEGMENT_KEY);
+        }
+    }();
+  </script><!-- End of Segment Code -->
+  <script>
+    var email = "cragser@hotmail.com";
+    if (email !== "") {
+      analytics.identify(email, {
+        email: email
+      }, {}, {
+        integrations: {
+          'All': false,
+          'Intercom': false,
+          'Woopra': true,
+        }
+      });
+
+      analytics.page({}, {
+        integrations: {
+          'All': false,
+          'Intercom': false,
+          'Woopra': true,
+        }
+      });
+
+    }
+  </script>
+  <script type="text/javascript" src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js"></script>
+  <!-- Google Analytics Platzi -->
+  <script>
+    (function (i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r;
+      i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date();
+      a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga')
+
+    window.ga = window.ga || function () {
+      (ga.q = ga.q || []).push(arguments)
+    };
+    ga.l = +new Date;
+
+
+
+
+    // Create Trackers
+    ga('create', 'UA-76863-15', 'auto', 'platziPlatformES');
+    ga('create', 'UA-76863-27', 'auto', 'platziFull');
+
+    // Require Plugins for platziPlatformES
+    ga('platziPlatformES.require', 'ecommerce');
+    ga('platziPlatformES.require', 'outboundLinkTracker');
+    ga('platziPlatformES.require', 'socialWidgetTracker');
+
+    // Require Plugins for platziFull
+    ga('platziFull.require', 'ecommerce');
+    ga('platziFull.require', 'outboundLinkTracker');
+    ga('platziFull.require', 'socialWidgetTracker');
+
+    // If userId, update userId
+
+    ga('platziPlatformES.set', 'userId', 'cragser');
+    ga('platziFull.set', 'userId', 'cragser');
+
+
+    //Send Pageview
+    ga('platziPlatformES.send', 'pageview');
+    ga('platziFull.send', 'pageview');
+  </script><!-- Autotrack plugin for Google Analytics -->
+  <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js"></script>
+  <!-- End Google Analytics Platzi -->
+  <script>
+    ! function (f, b, e, v, n, t, s) {
+      if (f.fbq) return;
+      n = f.fbq = function () {
+        n.callMethod ?
+          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      };
+      if (!f._fbq) f._fbq = n;
+      n.push = n;
+      n.loaded = !0;
+      n.version = '2.0';
+      n.queue = [];
+      t = b.createElement(e);
+      t.async = !0;
+      t.src = v;
+      s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1545967215651797');
+    fbq('track', 'PageView');
+  </script><noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=1545967215651797&ev=PageView&noscript=1" /></noscript>
+  <!-- End Facebook Pixel Code -->
+  <!-- Twitter universal website tag code -->
+  <script>
+    ! function (e, t, n, s, u, a) {
+      e.twq || (s = e.twq = function () {
+          s.exe ? s.exe.apply(s, arguments) : s.queue.push(arguments);
+        }, s.version = '1.1', s.queue = [], u = t.createElement(n), u.async = !0, u.src =
+        '//static.ads-twitter.com/uwt.js',
+        a = t.getElementsByTagName(n)[0], a.parentNode.insertBefore(u, a))
+    }(window, document, 'script');
+    // Insert Twitter Pixel ID and Standard Event data below
+    twq('init', 'nyfpx');
+    twq('track', 'PageView');
+  </script><!-- End Twitter universal website tag code -->
+  <link type="text/css" href="https://static.platzi.com/static/css/b/timeline-v2.be21f79f4c00f6b118e8.css.gz"
+    rel="stylesheet" />
+  <link type="text/css" href="https://static.platzi.com/static/css/b/past-due-notification.be21f79f4c00f6b118e8.css.gz"
+    rel="stylesheet" /><!-- script to load browser based polyfills -->
+  <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+  <script>
+    // display a warning in the console
+
+    console.log('%cStop!', 'color: red;font-size:2.5rem;font-weight:bold;');
+    console.log(
+      '%cThis is a browser feature intended for developers. If someone told you to copy-paste something here to enable a Platzi feature or "hack" someone\'s account, it is a scam and will give them access to your Platzi account.',
+      'font-size:1.25rem;line-height:1.1;margin-top:.5em');
+  </script>
+</head>
+
+<body class="prettify-desert" ontouchstart="">
+  <div id="contact-us-modal"></div>
+  <div id="terms"></div>
+  <header id="header-v2">
+    <div data-reactroot="" data-reactid="1" data-react-checksum="1562466296">
+      <div data-reactid="2"></div>
+      <div class="Header-v2 Header-v2-content" data-reactid="3">
+        <div class="Logo" data-reactid="4">
+          <div class="LogoHeader" data-reactid="5">
+            <div class="LogoHeader-container" data-reactid="6">
+              <figure data-reactid="7"><img
+                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAB/xJREFUaAXlWX1wXFUVv+e+3YQWWg1DCuqUoQy0DAi0yW5kpoy7L5tSDaUo0CgDFNMmm8I4MEWtAyKCMAooHaTDkH2JlKLATAst5aOVkmS3+DGa3a31D5EpKB8BHZqQRoTQJtl3+d3Ac27evr3vbbL5R98fe+89X/f83jnv3I9l7H/kodnGkRbx0KE8W0WCrRRMnM4EGYKxAczbS3zezo7Is6OV8GFWgVjZeBOcfkgIcYaXs8ToXU60qT2aftSLXw5t1oCksvFvM8HuRxQMP4eI6P5kJH0TWuCe3jMrQKz++HdtJn5WjktEzEpGMhumC6biQKz+2M02Yz8pB4QjS8S3JiOxNqLbYaK8p6JArH7zNpvZd5TnwlRpgPlVTeSk1hbaUZjK0Y8qBgTpdCfS6Vb9dAG5xJ84MXLSNeWAqQgQVKe7bSG+7+cmqlSBETuKKna8nywjenJJhF1pUmbCVxYCMwZiZWP32YLd5D8ZSYeu5owP2KywF/35fjr48J9mtLilI2KN+8r6Cej4qf7YL1Avb9DJSB4q0jgxfmUymn5KjruzjQ0FZr+AyHxWjvUPPXdqzZwrms/ce0wnN62IwAGyso0PCmZfpzMueQAxhii0YNHbrcp25c16u2Dvw4s4UaV79ZGSv6mqZV9vXZQ56sWXNF6KUYr+CQjTCgICKI4x4pe5QUjb7fXpPIUpgfQZKjWXQ8ei+pVjQ+KZ7QNr5jg0d1tWRIS4naeymV8yJr7lNuQe4y0eJYO+lqxPv+DmqeNUrulcYY/3gLZApXv1Ed30nKrqS9aev+9DNz8wkO1ijTGcHdwGEFe5jbjHmHBUGHz1hrp0r5vnNX74QOLssYkCZMUpXnyVJtOsJlq7yl2aA6WW3MEeyQ0+FgwEfUiCNwcFIZ1cV9f7cpgojhfwT9Vpr75Ms+H84M1unm9EUrlkmIlDT+DbuNyt7B7D2H8Yp+aOSOZ3bl6QcXc+fsaELfqw2VyolSf6oDrEFrYuy4w4ctqIbP/rmiohDu0IBILo39ygi6YLQjrUVp95zaiqjqEAvOk46NkKccK4zS5WeSWB7Hn1q9VHRgd3MiEuVRW8+ph4hISxor0+80cvfjm09vP3vW4YPIal+h86PWFTvcr3BCI/7LdGRnciElNQq4pOH+k0jBKbSDb0Zh3aTNu2ur43sfZs1NmBbzUqP6QOnP5I7vC9yNNmZ1yqlWtAyKCm9XV9fyklMx261Z+IClbYptPF3IMqvygiqVz8LCzcN6pCJfqHcfQz19elKwqiKx+/QFDhRbxx/faFxB9Uv4oigi3DepRZ7fEUZfJfnIcTbfU9f1ONzbSPl3ihXRB74MM8nS2sJe/WnFw7ZaEtAoJTswlDmofeobDR2L6055BGqGwWDmUxROF5zH28rzJnt7Ys3PGRKleUWojG51UBV/994jyWXNpbURCdB8yEIHsPgPiCQDZYKPHdLr+8No1UtI9RlOYzUVinjGfctfLmSpoQzwnB5vobo0eSEdNzx+0VkZd1BjHhLamsea9OJiivK2s227bYjW3HcX46+C66O6LpdaUuJoqAEKddfkaFsL8HMJv95HR8K2uuxkXFLiy41To5ycOh7CEcypIouSU/3yIgQix+DAqv+RkHmI24hNuCvMaaWN7T2W9ehvPMk4hulZ8mJ76loyF9vQ6EtOHpROeBeIRNiJfAL3mQcRzABCncEl7nN5Ej39kf/wb6v0ZRKaqYjozTcmKbk9H933HGurYoIlJ4Q10mx8m4XB6OdMqSh4h0pHJmlzx0+clKPme0JBgIuicoCGnXMyKSIZ+ubGJFQUzsRtc3MrD0aEfEbC31MU4a/PQHKfkDvIC7VJraB9i7kg2ZH6o0v74WiFTuyjc22nbh2SDlEcYer4kuWOs+vXk5gWKxCd/ZPW4eNos/Sjakf+ym+419gUgDnQcav8wK9vPIoxP8DIK/fUmUrgpysZbKxjbiBf23+iE3b0k27P9pgDmKRAIBkVrdWXN5Qdh7/fZBUhar7058Ct8McrE2+fcDEw+QoE1Ip59L/ek8gYFI4/iov4SoyIu1z/hNBjDP1MxdsKblnB1jfrLy3hhXRrcFrXxe9gJVGkexI5L+E/bFTfiwjzi0Ui1SZvXw6OFd8qRZWkZQZy72oLz8LqfyedkrC4g0IEtziIUTSKD3vAxOoeFwNjAy6nmxJhdSKxfvZDa7flJHiPVWNvNw0DI+ZR4MykotVbkrnzjPtid68OZrVXqJfh/x+Zc4f3xKZ63c/m5UrVa3PBwKXPlU3WkDkUasg+Y5Ykz0YtN3smrUq4/8318zl61iZ9d+dCQ3tBUgrvGS+5QWuPI5NmYERBqRR2MUgD5E5nOO0ZIt0e8x4dtIK7lN0T7ynyvsdtdqhRRm2d+IojvZxSHnlapQVQzbmbfdvKKxEMuDgED9/oBz3lWkryHMGIi03brsxVfDFMLFGntLM1dQ1vvMMC5qr+/9bVAFKTfj1FIn2/rn+Glj40gzxhap9KB9fEcjBuMr26J9/UF1HLmKRMQxhrvYN8Js8srz7w4taIs3Osw5NU0HhJyjohFxnN52sPELR8cKMjKLHZquRSSGKMRWJJdlDurkdLyKRsSZ6Nqlfe+EQ3MvlCXXoZVqIfMKrpeWzwSEtD0rEXGclnfII7mha7EF2YgS/UWH/klLb+CU1Uls3hZnoZzKL280q0BUVybTbcJeRDYZITIG1kV7tLftqu7/Vf9j62jVVP675JMAAAAASUVORK5CYII="
+                  alt="Platzi isotipo" height="25" data-reactid="8" /></figure>
+              <figure class="LogoHeader-name" data-reactid="9"><img
+                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGcAAAAyCAYAAABBAsW9AAAAAXNSR0IArs4c6QAABsdJREFUeAHtmmuIVVUUx51MTUV7YKKVj3LSpKAX2csIjd6JX3qhjZVUEpVk4CNJkp7kh4osicgUJQn7IGVmGAaZ9CQwlNLS7EO+ykpHdJIcp9//evd1zZ59z73n3NvlknvBf/Zaa6+99jprn7P3OudOp06RYgZiBmIGYgZiBmIGYgZiBmIGYgZiBmIGYgZiBmIGGpSCtra2zjQ9U6SjtaGhYX8Ke81xAvZdzZjUPszY/xVLbpT7g+T0UIcLo/NykJZaGPAzWARuBcd3cGwU9L8KLH1juo9JlmT0AavzSfmb9qkOiUCZZXHyPgvNRrgbOzjPK+iLi+Mlh5y8UcjeUWa0MzvOMVVoh+FjBXNMrYKvY8XFuYELPc/pkraigxj94wy9tgtyN08nUWfYHBZoN/vngkB/3aiIUfHrOhzpDGxxQo3aL5nnCm+ur9vJBBra1ia3MzIC9g2gEYwDPwGfdB4NNkNUENTVtkY8/payysZbC54YeoLFYB/YCR6x82ba1rjD2sBmsARnF4B3rVN4VWYzPV0UvQyQv/2gCfQC/cBca5JpcawDHKqkvg/ssHr48dwJoa3PM4tisQxUvDhyzAI10zznTdID+UpPF8UUGUgqCFK4yZm2P8iOjB5K80laRyF7nsJT0F8HLgWNoDfQ9qkbYzf4HnwLVnOzqJhpR4y/BMU5Rnm24cX2x6bJ0zlxHT7XS8CmF80415Gh/Q5fKgTkawiNXxAsob+14BejVAVBYaBh8HES8GmWM6EjU0HAuIFgIVCRUQ7txUiH7BhQ2FbhXwFZyV7H4KxO8uPGmJzcE/DV3fVXZVvLOzvDOTXtAcOnZgl8PIM2gLuBnpJySE/UXeB9cHs5A2po8w5PxfJy56vmtnZ+YNJtAV1ZKhZmAoYLQe77nzfoT+SNQIvfF2iLKtxx8PVIvxNUu1K5VJBVWRwSqSdwSmCyzwK6kir8DcdoPvAXZim6Gdx9W60T7FV8XAMWgxNtn+Fnw79o5Ofh7zTyWvgmI1t2jxF+hT/TyCH2LJQrQVfT+TBx62wsm6qyOMw2DVzszfoVwWR9cl7Glx/bBPwp+R0IvZ6g5SzSPtrg4mCjp03IUd7WiWpbsPnFKkI8NvpyXNQOv53pfxvYhVnGON1YqchPQKrBBNKHAUqkzgafnvYV5cj4HIidqjJLS7m44MJYozrhHycOW4HphngwS2xJi6NKwk5i/euu0Ae6RuBvPbJTMleIyUBjA2NmBnR1pyJfKtef9AJ7lFzs8nRliUmLcyEehLSkGn5i2kHGXueNpT1c3BarqEeehelJXNrObE5XVPLEV7OUbiOwBWAUAemTTlYa4A1c58n1KqrYUNXoaC/MJCdkae0qZxmvMTqEPwIvsCh6Q6+U/BtGi14uBYuBcgdnteOpuYmxD3jjp5CPrAVRzlXS4nyAxXvehE5shVFZuAPoc0Sx332cfZq2UFHlB6ksLUkk6HSM9GmlpsS8mvN1b1JVZ9pFKqKkxdH3pDcr8p5tsF4uLQ0gAfqcvtMqA/xFAV2SSiWxpS5WSMHPwdZuxYrTf4pSuDtq6m8hR3uqz+ldxFKxLegLawSvGKd7upA4NaRM0P3m9Z3qySVFbpqrMfLPlYncSKleNotNVMvF0QFpqZ8VDL8GXtulpUkkYrRVWJ6+e5Gvsro8n3R9/pM4FD8nB3wEVdh2p0M7i32VmMfC6MtAVSgp+KpMYJxsNbzYXlzgbZ5Ovw1pu5nn6ZWIVdjPBPrpoBOtfiofBl5CfEs66PCRpvD3tALXkfncU2lbe8zTJYl6yW40Bj/CT8vHpdiCMPblsTgK/WSQ6Q2/2IzMMQj41IxiLngITAe5m4W2G9gEQnQI5TawJ9ApX5b0u7x8++9OuTDR/2CN4Q+DeWAkGA6uB8+AZfa6kEcAxZGFZjtfDE78ycAF+Z8vjiYimJUlrqZQbWGnp2JHCXvb/SFCX6AE+zTDJcS2GN3iGybIPfLX0BWbDQl2pbpmuxgwTFycWm5rimky2OWCC7SFxWF720T/SPBpwM5XqZQdyxgd8vP9zmIy9npdeAL422FoyJC8Ut/OQv9vFhpTkc6V0vokvsrztNmTKxZJhv6NagSOZoGbQX/jVBWOvtkVCPst2I9CcQO4A1wG3DmiM0znxmvY6Qe5HMHfzxhVfNeCQeAPsB4ECftnsV9Lp6o9jWkXA7JukjWgGYhy598RNtPfLWbUdviPjSy21cm20nC6mrUkpTeT6SA+QJJaajZxkYmIR1uXbhhVbX+B7fUQF3FEihmIGYgZiBmIGYgZiBmIGYgZiBmIGYgZiBmIGThmM/Av6aLTWmXPVoEAAAAASUVORK5CYII="
+                  alt="Platzi Logo" height="25" data-reactid="10" /></figure>
+            </div><a href="/" class="LogoHeader-link" data-reactid="11"></a>
+          </div>
+        </div>
+        <div class="Nav-header-logged" data-reactid="12">
+          <div class="Actionsv2" data-reactid="13">
+            <div data-reactid="14">
+              <div data-reactid="15">
+                <div class="Actionsv2-menu-logged" data-reactid="16"><img class="Actionsv2-avatar"
+                    src="https://static.platzi.com/static/website/v2/images/avatar_default.png" alt="Platzerito!"
+                    data-reactid="17" /><i class="icon-arrow-down toggle-down" data-reactid="18"></i><span
+                    data-reactid="19">0 pts</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="Menu" data-reactid="20">
+            <div class="Menu-dropdown" data-reactid="21">
+              <div class="Menu-title" data-reactid="22"><span data-reactid="23">Menú</span></div>
+            </div>
+            <div class="Menu-content" data-reactid="24">
+              <div data-reactid="25">
+                <ul class="Menu-list" data-reactid="26">
+                  <li class="Menu-list-item" data-reactid="27"><a href="/clases/" data-reactid="28">
+                      <div data-reactid="29">Clases</div>
+                    </a></li>
+                  <li class="Menu-list-item" data-reactid="30"><a href="/blog/" data-reactid="31">
+                      <div data-reactid="32">Blog</div>
+                    </a></li>
+                  <li class="Menu-list-item" data-reactid="33"><a href="/foro/" data-reactid="34">
+                      <div data-reactid="35">Foro</div>
+                    </a></li>
+                  <li class="Menu-list-item" data-reactid="36"><a href="/agenda/" data-reactid="37">
+                      <div data-reactid="38">Agenda</div>
+                    </a></li>
+                  <li class="Menu-list-item" data-reactid="39"><a href="/live/" data-reactid="40">
+                      <div data-reactid="41">TV</div>
+                    </a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="Tinkerbell" data-reactid="42">
+            <div class="Tinkerbell-icon is-new" data-reactid="43"><svg version="1.1" id="Layer_1" width="24" height="24"
+                x="0px" y="0px" viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve"
+                data-reactid="44">
+                <g class="Bell-body" data-reactid="45">
+                  <path id="campanita2" class="Bell-clapper" style="fill:white;"
+                    d="M12.9,18.9c0,0.5-0.4,0.9-0.9,0.9s-0.9-0.4-0.9-0.9H9.7c0,1.3,1,2.3,2.3,2.3s2.3-1,2.3-2.3H12.9z"
+                    data-reactid="46"></path>
+                  <path id="camapanita1" style="fill:white;" d="M19.2,14.7c-0.6-0.6-1.2-1.2-1.2-4.1c0-3-2.2-5.4-5-5.9c0.1-0.2,0.2-0.4,0.2-0.6
+            c0-0.6-0.5-1.1-1.1-1.1S10.9,3.4,10.9,4c0,0.2,0.1,0.5,0.2,0.6c-2.8,0.5-5,2.9-5,5.9c0,2.9-0.6,3.5-1.2,4.1
+            c-1.7,1.7-0.5,4.2,1.6,4.2h3.3h4.6h3.3C19.7,18.9,20.9,16.4,19.2,14.7z M17.6,17.1H6.4c-0.6,0-0.9-0.7-0.5-1.1c1-1,1.8-2,1.8-5.5
+            c0-2.3,1.9-4.2,4.2-4.2s4.2,1.9,4.2,4.2c0,3.5,0.8,4.4,1.8,5.5C18.5,16.4,18.2,17.1,17.6,17.1z"
+                    data-reactid="47"></path>
+                </g>
+                <circle style="fill:#FF4842;" cx="17" cy="7" r="5" data-reactid="48"></circle>
+              </svg></div>
+          </div>
+          <div class="MiniSearch is-tablet" data-reactid="49">
+            <div class="MiniSearch-button MiniSearch-show" data-reactid="50"><span class="icon-search"
+                data-reactid="51"></span></div>
+          </div>
+          <div class="MiniSearch is-desktop" data-reactid="52">
+            <div class="Searchv" data-reactid="53">
+              <div class="Searchv-content" data-reactid="54">
+                <form class="" data-reactid="55"><input type="text" placeholder="Buscar en Platzi" name="search"
+                    autocomplete="off" data-reactid="56" /><button class="Searchv-icon" data-reactid="57"><span
+                      class="icon-search" data-reactid="58"></span></button></form>
+              </div>
+              <div class="Searchv-results" data-reactid="59"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="overlay"></div>
+  <section id="wrapper"><input type="hidden" name="csrfmiddlewaretoken"
+      value="Q0Evkn2qhFodNCVtHoOM1xygZIqhCFjrsOp2KBbFhpYMTQzFQj3rhyHPF2nK4Q67">
+    <section id="timeline-v2">
+      <div class="u-wrapper" data-reactroot="" data-reactid="1" data-react-checksum="760857685">
+        <div class="Timeline" data-reactid="2">
+          <section class="TimelineLeft u-scroll" data-reactid="3">
+            <div class="CourseDetail" data-reactid="4">
+              <div class="CourseDetail-top" data-reactid="5">
+                <div class="CourseDetail-left" data-reactid="6">
+                  <figure class="CourseDetail-left-figure" data-reactid="7"><img
+                      src="https://static.platzi.com/media/achievements/1260-96b9750a-e31f-4c0e-a6ca-fdacd94b38aa.png"
+                      alt="Curso de Introducción al Lenguaje Audiovisual" data-reactid="8" /></figure>
+                  <div class="CourseDetail-left-content" data-reactid="9">
+                    <h1 class="CourseDetail-left-title" data-reactid="10">Curso de Introducción al Lenguaje Audiovisual
+                    </h1>
+                    <div class="CourseDetail-left-teacher" data-reactid="11"><span
+                        class="CourseDetail-left-teacher-text" data-reactid="12"><span data-reactid="13">Por:
+                        </span></span>
+                      <div class="CourseDetail-left-teacher-content" data-reactid="14">
+                        <figure class="CourseDetail-left-teacher-badge" data-reactid="15"><img
+                            src="https://static.platzi.com/media/teachers/Winiberto.JPG" alt="Ludwin Cuevas"
+                            data-reactid="16" /></figure><span class="CourseDetail-left-teacher-name"
+                          data-reactid="17">Ludwin Cuevas</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="CourseDetail-right" data-reactid="18">
+                  <figure class="CourseLevel" data-reactid="19">
+                    <div class="CourseLevel-bar " data-reactid="20"></div>
+                    <div class="CourseLevel-bar " data-reactid="21"></div>
+                    <div class="CourseLevel-bar " data-reactid="22"></div>
+                    <figcaption class="CourseLevel-label" data-reactid="23">Básico</figcaption>
+                  </figure>
+                  <div class="CourseDetail-right-path" data-reactid="24"><span data-reactid="25">Ver la ruta de
+                      aprendizaje</span><i class="icon-arrow-down" data-reactid="26"></i></div>
+                </div>
+              </div>
+              <div class="CourseDetail-bottom" data-reactid="27"></div>
+            </div>
+            <div class="Sticky" data-reactid="28">
+              <div class="StickyContent" data-reactid="29">
+                <div class="StickyContent-left" data-reactid="30">
+                  <figure class="StickyContent-left-figure" data-reactid="31"><img
+                      src="https://static.platzi.com/media/achievements/1260-96b9750a-e31f-4c0e-a6ca-fdacd94b38aa.png"
+                      alt="Curso de Introducción al Lenguaje Audiovisual" data-reactid="32" /></figure>
+                  <div class="StickyContent-left-content" data-reactid="33">
+                    <h1 class="StickyContent-left-title" data-reactid="34">Curso de Introducción al Lenguaje Audiovisual
+                    </h1>
+                  </div>
+                </div>
+                <div class="StickyContent-right" data-reactid="35">
+                  <div class="CourseProgress" data-reactid="36">
+                    <p class="CourseProgress-label" data-reactid="37"><span data-reactid="38">Progreso del curso:</span>
+                      <!-- react-text: 39 -->
+                      <!-- /react-text -->
+                      <!-- react-text: 40 -->
+                      <!-- /react-text -->
+                      <!-- react-text: 41 -->
+                      <!-- /react-text -->
+                      <!-- react-text: 42 -->17
+                      <!-- /react-text -->
+                      <!-- react-text: 43 -->/
+                      <!-- /react-text -->
+                      <!-- react-text: 44 -->17
+                      <!-- /react-text -->
+                      <!-- react-text: 45 -->
+                      <!-- /react-text -->
+                      <!-- react-text: 46 -->
+                      <!-- /react-text --><span data-reactid="47">contenidos</span><span
+                        class="CourseProgress-label--blue" data-reactid="48">
+                        <!-- react-text: 49 -->(
+                        <!-- /react-text -->
+                        <!-- react-text: 50 -->100
+                        <!-- /react-text -->
+                        <!-- react-text: 51 -->%)
+                        <!-- /react-text --></span></p>
+                    <div class="CourseProgressBar" data-reactid="52">
+                      <div class="CourseProgressBar-total" data-reactid="53"></div>
+                      <div class="CourseProgressBar-progress" style="width:100%;" data-reactid="54"></div>
+                      <div class="CourseProgressBar-circle complete" style="left:20.00%;" data-reactid="55"></div>
+                      <div class="CourseProgressBar-circle complete" style="left:40.00%;" data-reactid="56"></div>
+                      <div class="CourseProgressBar-circle complete" style="left:60.00%;" data-reactid="57"></div>
+                      <div class="CourseProgressBar-circle complete" style="left:80.00%;" data-reactid="58"></div>
+                      <div class="CourseProgressBar-circle complete" style="left:100.00%;" data-reactid="59"></div>
+                    </div>
+                  </div>
+                  <div class="CourseActions" data-reactid="60">
+                    <div class="CourseActions-btns" data-reactid="61"><a class="CourseButton" target="_blank"
+                        data-reactid="62"><i class="icon-courses" data-reactid="63"></i><span class="CourseButton-text"
+                          data-reactid="64">Presenta el examen</span></a></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="TabsContent" data-reactid="65">
+              <div class="Tabs" data-reactid="66">
+                <div class="SingleTab is-active" data-reactid="67">Contenido del Curso</div>
+                <div class="SingleTab" data-reactid="68">Tutoriales de estudiantes</div>
+                <div class="SingleTab" data-reactid="69">Preguntas de estudiantes</div>
+              </div>
+              <div class="TabsContent-elements" data-reactid="70">
+                <div class="Material" data-reactid="71">
+                  <div class="CourseProgressContent" data-reactid="72">
+                    <div class="CourseProgress" data-reactid="73">
+                      <p class="CourseProgress-label" data-reactid="74"><span data-reactid="75">Progreso del
+                          curso:</span><!-- react-text: 76 -->
+                        <!-- /react-text -->
+                        <!-- react-text: 77 -->
+                        <!-- /react-text -->
+                        <!-- react-text: 78 -->
+                        <!-- /react-text -->
+                        <!-- react-text: 79 -->17
+                        <!-- /react-text -->
+                        <!-- react-text: 80 -->/
+                        <!-- /react-text -->
+                        <!-- react-text: 81 -->17
+                        <!-- /react-text -->
+                        <!-- react-text: 82 -->
+                        <!-- /react-text -->
+                        <!-- react-text: 83 -->
+                        <!-- /react-text --><span data-reactid="84">contenidos</span><span
+                          class="CourseProgress-label--blue" data-reactid="85">
+                          <!-- react-text: 86 -->(
+                          <!-- /react-text -->
+                          <!-- react-text: 87 -->100
+                          <!-- /react-text -->
+                          <!-- react-text: 88 -->%)
+                          <!-- /react-text --></span></p>
+                      <div class="CourseProgressBar" data-reactid="89">
+                        <div class="CourseProgressBar-total" data-reactid="90"></div>
+                        <div class="CourseProgressBar-progress" style="width:100%;" data-reactid="91"></div>
+                        <div class="CourseProgressBar-circle complete" style="left:20.00%;" data-reactid="92"></div>
+                        <div class="CourseProgressBar-circle complete" style="left:40.00%;" data-reactid="93"></div>
+                        <div class="CourseProgressBar-circle complete" style="left:60.00%;" data-reactid="94"></div>
+                        <div class="CourseProgressBar-circle complete" style="left:80.00%;" data-reactid="95"></div>
+                        <div class="CourseProgressBar-circle complete" style="left:100.00%;" data-reactid="96"></div>
+                      </div>
+                    </div>
+                    <div class="CourseActions" data-reactid="97">
+                      <div class="CourseActions-btns" data-reactid="98"><a class="CourseButton" target="_blank"
+                          data-reactid="99"><i class="icon-courses" data-reactid="100"></i><span
+                            class="CourseButton-text" data-reactid="101">Presenta el examen</span></a></div>
+                    </div>
+                  </div>
+                  <div class="Material-progress" data-reactid="102">
+                    <div class="Material-progress-icon" data-reactid="103"><i class="icon-cloud-smile"
+                        data-reactid="104"></i></div>
+                    <div class="Material-progress-copy" data-reactid="105"><strong>Tu avance es increíble,</strong>
+                      estás por dominar el tema y certificarte</div>
+                  </div>
+                  <div class="Material-concept" data-reactid="106">
+                    <div class="Material-concept-edit" data-reactid="107">
+                      <h3 class="Material-title" data-reactid="108">Introducción al lenguaje audiovisual</h3>
+                    </div>
+                    <div class="MaterialItem-content" data-reactid="109">
+                      <div class="MaterialItem" data-reactid="110">
+                        <div class="MaterialItem-viewedoverlay" data-reactid="111"></div>
+                        <div class="MaterialItem-left" data-reactid="112">
+                          <div class="MaterialItem-reading" data-reactid="113"><i class="icon-texto"
+                              data-reactid="114"></i></div>
+                        </div>
+                        <div class="MaterialItem-copy" data-reactid="115">
+                          <p class="MaterialItem-copy-title" data-reactid="116">Antes de comenzar</p>
+                          <div class="MaterialItem-copy-actions" data-reactid="117"><a
+                              class="MaterialItem-copy-actions-anchor" data-reactid="118"><i class="icon-eye-slash"
+                                data-reactid="119"></i><span data-reactid="120">Marcar como no vista</span></a></div>
+                        </div>
+                      </div><a href="/clases/1260-lenguaje-audiovisual/10681-antes-de-comenzar/"
+                        class="MaterialItem-anchor" data-reactid="121"></a>
+                    </div>
+                    <div class="MaterialItem-content" data-reactid="122">
+                      <div class="MaterialItem" data-reactid="123">
+                        <div class="MaterialItem-viewedoverlay" data-reactid="124"></div>
+                        <div class="MaterialItem-video" data-reactid="125">
+                          <div class="MaterialIcon reload" data-reactid="126"><i class="icon-reload"
+                              data-reactid="127"></i></div><img class="MaterialItem-thumbnail"
+                            src="https://mdstrm.com/thumbs/512e13acaca1ebcd2f000279/2018420/thumb_5ad9e3faccf7c543ec0f4d0e_original_206s.jpg"
+                            alt="Material Thumbnail" data-reactid="128" />
+                          <div class="MaterialItem-progress" data-reactid="129">
+                            <div class="MaterialItem-completed" style="width:100%;" data-reactid="130"></div>
+                          </div>
+                        </div>
+                        <div class="MaterialItem-copy" data-reactid="131">
+                          <p class="MaterialItem-copy-title" data-reactid="132">Introducción al lenguaje audiovisual,
+                            características y dimensiones</p>
+                          <p class="MaterialItem-copy-time" data-reactid="133"><i class="icon-clock_A"
+                              data-reactid="134"></i><!-- react-text: 135 -->06
+                            <!-- /react-text -->
+                            <!-- react-text: 136 -->:
+                            <!-- /react-text -->
+                            <!-- react-text: 137 -->51 min
+                            <!-- /react-text -->
+                          </p>
+                          <div class="MaterialItem-copy-actions" data-reactid="138"><a
+                              class="MaterialItem-copy-actions-anchor" data-reactid="139"><i class="icon-eye-slash"
+                                data-reactid="140"></i><span data-reactid="141">Marcar como no vista</span></a></div>
+                        </div>
+                      </div><a
+                        href="/clases/1260-lenguaje-audiovisual/10682-introduccion-al-lenguaje-audiovisual-caracteristic/"
+                        class="MaterialItem-anchor" data-reactid="142"></a>
+                    </div>
+                  </div>
+                  <div class="Material-concept" data-reactid="143">
+                    <div class="Material-concept-edit" data-reactid="144">
+                      <h3 class="Material-title" data-reactid="145">Aspecto morfológico</h3>
+                    </div>
+                    <div class="MaterialItem-content" data-reactid="146">
+                      <div class="MaterialItem" data-reactid="147">
+                        <div class="MaterialItem-viewedoverlay" data-reactid="148"></div>
+                        <div class="MaterialItem-video" data-reactid="149">
+                          <div class="MaterialIcon reload" data-reactid="150"><i class="icon-reload"
+                              data-reactid="151"></i></div><img class="MaterialItem-thumbnail"
+                            src="https://mdstrm.com/thumbs/512e13acaca1ebcd2f000279/2018420/thumb_5ad9f3f0e904bf28207c0c8a_original_161s.jpg"
+                            alt="Material Thumbnail" data-reactid="152" />
+                          <div class="MaterialItem-progress" data-reactid="153">
+                            <div class="MaterialItem-completed" style="width:100%;" data-reactid="154"></div>
+                          </div>
+                        </div>
+                        <div class="MaterialItem-copy" data-reactid="155">
+                          <p class="MaterialItem-copy-title" data-reactid="156">Aspecto morfológico e imagen</p>
+                          <p class="MaterialItem-copy-time" data-reactid="157"><i class="icon-clock_A"
+                              data-reactid="158"></i><!-- react-text: 159 -->05
+                            <!-- /react-text -->
+                            <!-- react-text: 160 -->:
+                            <!-- /react-text -->
+                            <!-- react-text: 161 -->21 min
+                            <!-- /react-text -->
+                          </p>
+                          <div class="MaterialItem-copy-actions" data-reactid="162"><a
+                              class="MaterialItem-copy-actions-anchor" data-reactid="163"><i class="icon-eye-slash"
+                                data-reactid="164"></i><span data-reactid="165">Marcar como no vista</span></a></div>
+                        </div>
+                      </div><a href="/clases/1260-lenguaje-audiovisual/10683-aspecto-morfologico-e-imagen/"
+                        class="MaterialItem-anchor" data-reactid="166"></a>
+                    </div>
+                    <div class="MaterialItem-content" data-reactid="167">
+                      <div class="MaterialItem" data-reactid="168">
+                        <div class="MaterialItem-viewedoverlay" data-reactid="169"></div>
+                        <div class="MaterialItem-left" data-reactid="170">
+                          <div class="MaterialItem-reading" data-reactid="171"><i class="icon-texto"
+                              data-reactid="172"></i></div>
+                        </div>
+                        <div class="MaterialItem-copy" data-reactid="173">
+                          <p class="MaterialItem-copy-title" data-reactid="174">Funciones morfológicas de la imagen</p>
+                          <div class="MaterialItem-copy-actions" data-reactid="175"><a
+                              class="MaterialItem-copy-actions-anchor" data-reactid="176"><i class="icon-eye-slash"
+                                data-reactid="177"></i><span data-reactid="178">Marcar como no vista</span></a></div>
+                        </div>
+                      </div><a href="/clases/1260-lenguaje-audiovisual/10726-funciones-morfologicas-de-la-imagen/"
+                        class="MaterialItem-anchor" data-reactid="179"></a>
+                    </div>
+                    <div class="MaterialItem-content" data-reactid="180">
+                      <div class="MaterialItem" data-reactid="181">
+                        <div class="MaterialItem-viewedoverlay" data-reactid="182"></div>
+                        <div class="MaterialItem-video" data-reactid="183">
+                          <div class="MaterialIcon reload" data-reactid="184"><i class="icon-reload"
+                              data-reactid="185"></i></div><img class="MaterialItem-thumbnail"
+                            src="https://mdstrm.com/thumbs/512e13acaca1ebcd2f000279/2018420/thumb_5ad9e53051446213cd254a1e_original_215s.jpg"
+                            alt="Material Thumbnail" data-reactid="186" />
+                          <div class="MaterialItem-progress" data-reactid="187">
+                            <div class="MaterialItem-completed" style="width:100%;" data-reactid="188"></div>
+                          </div>
+                        </div>
+                        <div class="MaterialItem-copy" data-reactid="189">
+                          <p class="MaterialItem-copy-title" data-reactid="190">Características de la imagen y aspectos
+                            sonoros</p>
+                          <p class="MaterialItem-copy-time" data-reactid="191"><i class="icon-clock_A"
+                              data-reactid="192"></i><!-- react-text: 193 -->07
+                            <!-- /react-text -->
+                            <!-- react-text: 194 -->:
+                            <!-- /react-text -->
+                            <!-- react-text: 195 -->09 min
+                            <!-- /react-text -->
+                          </p>
+                          <div class="MaterialItem-copy-actions" data-reactid="196"><a
+                              class="MaterialItem-copy-actions-anchor" data-reactid="197"><i class="icon-eye-slash"
+                                data-reactid="198"></i><span data-reactid="199">Marcar como no vista</span></a></div>
+                        </div>
+                      </div><a
+                        href="/clases/1260-lenguaje-audiovisual/10684-caracteristicas-de-la-imagen-y-aspectos-sonoros/"
+                        class="MaterialItem-anchor" data-reactid="200"></a>
+                    </div>
+                  </div>
+                  <div class="Material-concept" data-reactid="201">
+                    <div class="Material-concept-edit" data-reactid="202">
+                      <h3 class="Material-title" data-reactid="203">Aspecto sintáctico</h3>
+                    </div>
+                    <div class="MaterialItem-content" data-reactid="204">
+                      <div class="MaterialItem" data-reactid="205">
+                        <div class="MaterialItem-viewedoverlay" data-reactid="206"></div>
+                        <div class="MaterialItem-video" data-reactid="207">
+                          <div class="MaterialIcon reload" data-reactid="208"><i class="icon-reload"
+                              data-reactid="209"></i></div><img class="MaterialItem-thumbnail"
+                            src="https://mdstrm.com/thumbs/512e13acaca1ebcd2f000279/2018420/thumb_5ad9e67385e9315cb31bf65e_original_285s.jpg"
+                            alt="Material Thumbnail" data-reactid="210" />
+                          <div class="MaterialItem-progress" data-reactid="211">
+                            <div class="MaterialItem-completed" style="width:100%;" data-reactid="212"></div>
+                          </div>
+                        </div>
+                        <div class="MaterialItem-copy" data-reactid="213">
+                          <p class="MaterialItem-copy-title" data-reactid="214">Planos</p>
+                          <p class="MaterialItem-copy-time" data-reactid="215"><i class="icon-clock_A"
+                              data-reactid="216"></i><!-- react-text: 217 -->09
+                            <!-- /react-text -->
+                            <!-- react-text: 218 -->:
+                            <!-- /react-text -->
+                            <!-- react-text: 219 -->29 min
+                            <!-- /react-text -->
+                          </p>
+                          <div class="MaterialItem-copy-actions" data-reactid="220"><a
+                              class="MaterialItem-copy-actions-anchor" data-reactid="221"><i class="icon-eye-slash"
+                                data-reactid="222"></i><span data-reactid="223">Marcar como no vista</span></a></div>
+                        </div>
+                      </div><a href="/clases/1260-lenguaje-audiovisual/10685-planos/" class="MaterialItem-anchor"
+                        data-reactid="224"></a>
+                    </div>
+                    <div class="MaterialItem-content" data-reactid="225">
+                      <div class="MaterialItem" data-reactid="226">
+                        <div class="MaterialItem-viewedoverlay" data-reactid="227"></div>
+                        <div class="MaterialItem-video" data-reactid="228">
+                          <div class="MaterialIcon reload" data-reactid="229"><i class="icon-reload"
+                              data-reactid="230"></i></div><img class="MaterialItem-thumbnail"
+                            src="https://mdstrm.com/thumbs/512e13acaca1ebcd2f000279/2018420/thumb_5ad9e64517938e42e403a96f_original_130s.jpg"
+                            alt="Material Thumbnail" data-reactid="231" />
+                          <div class="MaterialItem-progress" data-reactid="232">
+                            <div class="MaterialItem-completed" style="width:100%;" data-reactid="233"></div>
+                          </div>
+                        </div>
+                        <div class="MaterialItem-copy" data-reactid="234">
+                          <p class="MaterialItem-copy-title" data-reactid="235">Ángulos</p>
+                          <p class="MaterialItem-copy-time" data-reactid="236"><i class="icon-clock_A"
+                              data-reactid="237"></i><!-- react-text: 238 -->04
+                            <!-- /react-text -->
+                            <!-- react-text: 239 -->:
+                            <!-- /react-text -->
+                            <!-- react-text: 240 -->20 min
+                            <!-- /react-text -->
+                          </p>
+                          <div class="MaterialItem-copy-actions" data-reactid="241"><a
+                              class="MaterialItem-copy-actions-anchor" data-reactid="242"><i class="icon-eye-slash"
+                                data-reactid="243"></i><span data-reactid="244">Marcar como no vista</span></a></div>
+                        </div>
+                      </div><a href="/clases/1260-lenguaje-audiovisual/10686-angulos/" class="MaterialItem-anchor"
+                        data-reactid="245"></a>
+                    </div>
+                    <div class="MaterialItem-content" data-reactid="246">
+                      <div class="MaterialItem" data-reactid="247">
+                        <div class="MaterialItem-viewedoverlay" data-reactid="248"></div>
+                        <div class="MaterialItem-video" data-reactid="249">
+                          <div class="MaterialIcon reload" data-reactid="250"><i class="icon-reload"
+                              data-reactid="251"></i></div><img class="MaterialItem-thumbnail"
+                            src="https://mdstrm.com/thumbs/512e13acaca1ebcd2f000279/2018420/thumb_5ad9e51951446213cd254a11_original_242s.jpg"
+                            alt="Material Thumbnail" data-reactid="252" />
+                          <div class="MaterialItem-progress" data-reactid="253">
+                            <div class="MaterialItem-completed" style="width:100%;" data-reactid="254"></div>
+                          </div>
+                        </div>
+                        <div class="MaterialItem-copy" data-reactid="255">
+                          <p class="MaterialItem-copy-title" data-reactid="256">Composición</p>
+                          <p class="MaterialItem-copy-time" data-reactid="257"><i class="icon-clock_A"
+                              data-reactid="258"></i><!-- react-text: 259 -->08
+                            <!-- /react-text -->
+                            <!-- react-text: 260 -->:
+                            <!-- /react-text -->
+                            <!-- react-text: 261 -->04 min
+                            <!-- /react-text -->
+                          </p>
+                          <div class="MaterialItem-copy-actions" data-reactid="262"><a
+                              class="MaterialItem-copy-actions-anchor" data-reactid="263"><i class="icon-eye-slash"
+                                data-reactid="264"></i><span data-reactid="265">Marcar como no vista</span></a></div>
+                        </div>
+                      </div><a href="/clases/1260-lenguaje-audiovisual/10687-composicion8756/"
+                        class="MaterialItem-anchor" data-reactid="266"></a>
+                    </div>
+                    <div class="MaterialItem-content" data-reactid="267">
+                      <div class="MaterialItem" data-reactid="268">
+                        <div class="MaterialItem-viewedoverlay" data-reactid="269"></div>
+                        <div class="MaterialItem-video" data-reactid="270">
+                          <div class="MaterialIcon reload" data-reactid="271"><i class="icon-reload"
+                              data-reactid="272"></i></div><img class="MaterialItem-thumbnail"
+                            src="https://mdstrm.com/thumbs/512e13acaca1ebcd2f000279/2018420/thumb_5ad9e5b492fb5d1f3d84436b_original_201s.jpg"
+                            alt="Material Thumbnail" data-reactid="273" />
+                          <div class="MaterialItem-progress" data-reactid="274">
+                            <div class="MaterialItem-completed" style="width:100%;" data-reactid="275"></div>
+                          </div>
+                        </div>
+                        <div class="MaterialItem-copy" data-reactid="276">
+                          <p class="MaterialItem-copy-title" data-reactid="277">Profundidad de Campo y Distancia Focal
+                          </p>
+                          <p class="MaterialItem-copy-time" data-reactid="278"><i class="icon-clock_A"
+                              data-reactid="279"></i><!-- react-text: 280 -->06
+                            <!-- /react-text -->
+                            <!-- react-text: 281 -->:
+                            <!-- /react-text -->
+                            <!-- react-text: 282 -->42 min
+                            <!-- /react-text -->
+                          </p>
+                          <div class="MaterialItem-copy-actions" data-reactid="283"><a
+                              class="MaterialItem-copy-actions-anchor" data-reactid="284"><i class="icon-eye-slash"
+                                data-reactid="285"></i><span data-reactid="286">Marcar como no vista</span></a></div>
+                        </div>
+                      </div><a href="/clases/1260-lenguaje-audiovisual/10688-profundidad-de-campo-y-distancia-focal/"
+                        class="MaterialItem-anchor" data-reactid="287"></a>
+                    </div>
+                    <div class="MaterialItem-content" data-reactid="288">
+                      <div class="MaterialItem" data-reactid="289">
+                        <div class="MaterialItem-viewedoverlay" data-reactid="290"></div>
+                        <div class="MaterialItem-video" data-reactid="291">
+                          <div class="MaterialIcon reload" data-reactid="292"><i class="icon-reload"
+                              data-reactid="293"></i></div><img class="MaterialItem-thumbnail"
+                            src="https://mdstrm.com/thumbs/512e13acaca1ebcd2f000279/2018420/thumb_5ad9e6e7ab134d6dd63b025d_original_161s.jpg"
+                            alt="Material Thumbnail" data-reactid="294" />
+                          <div class="MaterialItem-progress" data-reactid="295">
+                            <div class="MaterialItem-completed" style="width:100%;" data-reactid="296"></div>
+                          </div>
+                        </div>
+                        <div class="MaterialItem-copy" data-reactid="297">
+                          <p class="MaterialItem-copy-title" data-reactid="298">Ritmo</p>
+                          <p class="MaterialItem-copy-time" data-reactid="299"><i class="icon-clock_A"
+                              data-reactid="300"></i><!-- react-text: 301 -->05
+                            <!-- /react-text -->
+                            <!-- react-text: 302 -->:
+                            <!-- /react-text -->
+                            <!-- react-text: 303 -->22 min
+                            <!-- /react-text -->
+                          </p>
+                          <div class="MaterialItem-copy-actions" data-reactid="304"><a
+                              class="MaterialItem-copy-actions-anchor" data-reactid="305"><i class="icon-eye-slash"
+                                data-reactid="306"></i><span data-reactid="307">Marcar como no vista</span></a></div>
+                        </div>
+                      </div><a href="/clases/1260-lenguaje-audiovisual/10689-ritmo5542/" class="MaterialItem-anchor"
+                        data-reactid="308"></a>
+                    </div>
+                    <div class="MaterialItem-content" data-reactid="309">
+                      <div class="MaterialItem" data-reactid="310">
+                        <div class="MaterialItem-viewedoverlay" data-reactid="311"></div>
+                        <div class="MaterialItem-video" data-reactid="312">
+                          <div class="MaterialIcon reload" data-reactid="313"><i class="icon-reload"
+                              data-reactid="314"></i></div><img class="MaterialItem-thumbnail"
+                            src="https://mdstrm.com/thumbs/512e13acaca1ebcd2f000279/thumb_5c65d15c976d9b0699882ff2_5c65d15c976d9b0699882ff6_42s.jpg"
+                            alt="Material Thumbnail" data-reactid="315" />
+                          <div class="MaterialItem-progress" data-reactid="316">
+                            <div class="MaterialItem-completed" style="width:100%;" data-reactid="317"></div>
+                          </div>
+                        </div>
+                        <div class="MaterialItem-copy" data-reactid="318">
+                          <p class="MaterialItem-copy-title" data-reactid="319">Iluminación</p>
+                          <p class="MaterialItem-copy-time" data-reactid="320"><i class="icon-clock_A"
+                              data-reactid="321"></i><!-- react-text: 322 -->06
+                            <!-- /react-text -->
+                            <!-- react-text: 323 -->:
+                            <!-- /react-text -->
+                            <!-- react-text: 324 -->57 min
+                            <!-- /react-text -->
+                          </p>
+                          <div class="MaterialItem-copy-actions" data-reactid="325"><a
+                              class="MaterialItem-copy-actions-anchor" data-reactid="326"><i class="icon-eye-slash"
+                                data-reactid="327"></i><span data-reactid="328">Marcar como no vista</span></a></div>
+                        </div>
+                      </div><a href="/clases/1260-lenguaje-audiovisual/10690-iluminacion2800/"
+                        class="MaterialItem-anchor" data-reactid="329"></a>
+                    </div>
+                    <div class="MaterialItem-content" data-reactid="330">
+                      <div class="MaterialItem" data-reactid="331">
+                        <div class="MaterialItem-viewedoverlay" data-reactid="332"></div>
+                        <div class="MaterialItem-video" data-reactid="333">
+                          <div class="MaterialIcon reload" data-reactid="334"><i class="icon-reload"
+                              data-reactid="335"></i></div><img class="MaterialItem-thumbnail"
+                            src="https://mdstrm.com/thumbs/512e13acaca1ebcd2f000279/2018420/thumb_5ad9e74685e9315cb31bf6a6_original_184s.jpg"
+                            alt="Material Thumbnail" data-reactid="336" />
+                          <div class="MaterialItem-progress" data-reactid="337">
+                            <div class="MaterialItem-completed" style="width:100%;" data-reactid="338"></div>
+                          </div>
+                        </div>
+                        <div class="MaterialItem-copy" data-reactid="339">
+                          <p class="MaterialItem-copy-title" data-reactid="340">Color</p>
+                          <p class="MaterialItem-copy-time" data-reactid="341"><i class="icon-clock_A"
+                              data-reactid="342"></i><!-- react-text: 343 -->06
+                            <!-- /react-text -->
+                            <!-- react-text: 344 -->:
+                            <!-- /react-text -->
+                            <!-- react-text: 345 -->07 min
+                            <!-- /react-text -->
+                          </p>
+                          <div class="MaterialItem-copy-actions" data-reactid="346"><a
+                              class="MaterialItem-copy-actions-anchor" data-reactid="347"><i class="icon-eye-slash"
+                                data-reactid="348"></i><span data-reactid="349">Marcar como no vista</span></a></div>
+                        </div>
+                      </div><a href="/clases/1260-lenguaje-audiovisual/10691-color8420/" class="MaterialItem-anchor"
+                        data-reactid="350"></a>
+                    </div>
+                    <div class="MaterialItem-content" data-reactid="351">
+                      <div class="MaterialItem" data-reactid="352">
+                        <div class="MaterialItem-viewedoverlay" data-reactid="353"></div>
+                        <div class="MaterialItem-video" data-reactid="354">
+                          <div class="MaterialIcon reload" data-reactid="355"><i class="icon-reload"
+                              data-reactid="356"></i></div><img class="MaterialItem-thumbnail"
+                            src="http://img.youtube.com/vi/7Vpi4a1l8f8/hqdefault.jpg" alt="Material Thumbnail"
+                            data-reactid="357" />
+                          <div class="MaterialItem-progress" data-reactid="358">
+                            <div class="MaterialItem-completed" style="width:100%;" data-reactid="359"></div>
+                          </div>
+                        </div>
+                        <div class="MaterialItem-copy" data-reactid="360">
+                          <p class="MaterialItem-copy-title" data-reactid="361">Movimientos de cámara</p>
+                          <div class="MaterialItem-copy-actions" data-reactid="362"><a
+                              class="MaterialItem-copy-actions-anchor" data-reactid="363"><i class="icon-eye-slash"
+                                data-reactid="364"></i><span data-reactid="365">Marcar como no vista</span></a></div>
+                        </div>
+                      </div><a href="/clases/1260-lenguaje-audiovisual/10692-movimientos-de-camara/"
+                        class="MaterialItem-anchor" data-reactid="366"></a>
+                    </div>
+                  </div>
+                  <div class="Material-concept" data-reactid="367">
+                    <div class="Material-concept-edit" data-reactid="368">
+                      <h3 class="Material-title" data-reactid="369">Aspecto Semántico</h3>
+                    </div>
+                    <div class="MaterialItem-content" data-reactid="370">
+                      <div class="MaterialItem" data-reactid="371">
+                        <div class="MaterialItem-viewedoverlay" data-reactid="372"></div>
+                        <div class="MaterialItem-left" data-reactid="373">
+                          <div class="MaterialItem-reading" data-reactid="374"><i class="icon-texto"
+                              data-reactid="375"></i></div>
+                        </div>
+                        <div class="MaterialItem-copy" data-reactid="376">
+                          <p class="MaterialItem-copy-title" data-reactid="377">Aspecto semántico del Lenguaje
+                            Audiovisual</p>
+                          <div class="MaterialItem-copy-actions" data-reactid="378"><a
+                              class="MaterialItem-copy-actions-anchor" data-reactid="379"><i class="icon-eye-slash"
+                                data-reactid="380"></i><span data-reactid="381">Marcar como no vista</span></a></div>
+                        </div>
+                      </div><a
+                        href="/clases/1260-lenguaje-audiovisual/10695-aspecto-semantico-del-lenguaje-audiovisual/"
+                        class="MaterialItem-anchor" data-reactid="382"></a>
+                    </div>
+                    <div class="MaterialItem-content" data-reactid="383">
+                      <div class="MaterialItem" data-reactid="384">
+                        <div class="MaterialItem-viewedoverlay" data-reactid="385"></div>
+                        <div class="MaterialItem-video" data-reactid="386">
+                          <div class="MaterialIcon reload" data-reactid="387"><i class="icon-reload"
+                              data-reactid="388"></i></div><img class="MaterialItem-thumbnail"
+                            src="https://mdstrm.com/thumbs/512e13acaca1ebcd2f000279/2018420/thumb_5ad9e5c285e9315cb31bf63d_original_169s.jpg"
+                            alt="Material Thumbnail" data-reactid="389" />
+                          <div class="MaterialItem-progress" data-reactid="390">
+                            <div class="MaterialItem-completed" style="width:100%;" data-reactid="391"></div>
+                          </div>
+                        </div>
+                        <div class="MaterialItem-copy" data-reactid="392">
+                          <p class="MaterialItem-copy-title" data-reactid="393">Recursos Visuales y lingüísticos</p>
+                          <p class="MaterialItem-copy-time" data-reactid="394"><i class="icon-clock_A"
+                              data-reactid="395"></i><!-- react-text: 396 -->05
+                            <!-- /react-text -->
+                            <!-- react-text: 397 -->:
+                            <!-- /react-text -->
+                            <!-- react-text: 398 -->37 min
+                            <!-- /react-text -->
+                          </p>
+                          <div class="MaterialItem-copy-actions" data-reactid="399"><a
+                              class="MaterialItem-copy-actions-anchor" data-reactid="400"><i class="icon-eye-slash"
+                                data-reactid="401"></i><span data-reactid="402">Marcar como no vista</span></a></div>
+                        </div>
+                      </div><a href="/clases/1260-lenguaje-audiovisual/10693-recursos-visuales-y-linguisticos/"
+                        class="MaterialItem-anchor" data-reactid="403"></a>
+                    </div>
+                  </div>
+                  <div class="Material-concept" data-reactid="404">
+                    <div class="Material-concept-edit" data-reactid="405">
+                      <h3 class="Material-title" data-reactid="406">Principios básicos de edición</h3>
+                    </div>
+                    <div class="MaterialItem-content" data-reactid="407">
+                      <div class="MaterialItem" data-reactid="408">
+                        <div class="MaterialItem-viewedoverlay" data-reactid="409"></div>
+                        <div class="MaterialItem-video" data-reactid="410">
+                          <div class="MaterialIcon reload" data-reactid="411"><i class="icon-reload"
+                              data-reactid="412"></i></div><img class="MaterialItem-thumbnail"
+                            src="http://img.youtube.com/vi/VdA6z2dlDIY/hqdefault.jpg" alt="Material Thumbnail"
+                            data-reactid="413" />
+                          <div class="MaterialItem-progress" data-reactid="414">
+                            <div class="MaterialItem-completed" style="width:100%;" data-reactid="415"></div>
+                          </div>
+                        </div>
+                        <div class="MaterialItem-copy" data-reactid="416">
+                          <p class="MaterialItem-copy-title" data-reactid="417">Efecto Kuleshov</p>
+                          <div class="MaterialItem-copy-actions" data-reactid="418"><a
+                              class="MaterialItem-copy-actions-anchor" data-reactid="419"><i class="icon-eye-slash"
+                                data-reactid="420"></i><span data-reactid="421">Marcar como no vista</span></a></div>
+                        </div>
+                      </div><a href="/clases/1260-lenguaje-audiovisual/10694-efecto-kuleshov/"
+                        class="MaterialItem-anchor" data-reactid="422"></a>
+                    </div>
+                    <div class="MaterialItem-content" data-reactid="423">
+                      <div class="MaterialItem MaterialItem--isCurrentMaterial" data-reactid="424">
+                        <div class="MaterialItem-viewedoverlay" data-reactid="425"></div>
+                        <div class="MaterialItem-left" data-reactid="426">
+                          <div class="MaterialItem-reading" data-reactid="427"><i class="icon-texto"
+                              data-reactid="428"></i></div>
+                        </div>
+                        <div class="MaterialItem-copy" data-reactid="429">
+                          <p class="MaterialItem-copy-title" data-reactid="430">Glosario de términos</p>
+                          <div class="MaterialItem-copy-actions" data-reactid="431"><a
+                              class="MaterialItem-copy-actions-anchor" data-reactid="432"><i class="icon-eye-slash"
+                                data-reactid="433"></i><span data-reactid="434">Marcar como no vista</span></a></div>
+                        </div>
+                      </div><a href="/clases/1260-lenguaje-audiovisual/10696-glosario-de-terminos/"
+                        class="MaterialItem-anchor" data-reactid="435"></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="TimelineRight u-scroll" data-reactid="436">
+            <div class="CardsContainer" data-reactid="437">
+              <div class="Chips-Container" data-reactid="438"><span class="Chips-badge is-active"
+                  data-reactid="439">nuevos</span><span class="Chips-badge" data-reactid="440">más votados</span><span
+                  class="Chips-badge" data-reactid="441">sin responder</span></div>
+              <div class="CardList" data-reactid="442">
+                <div class="InfinityScrollLayout" data-reactid="443">
+                  <div class="Card" data-reactid="444">
+                    <div class="Card-top" data-reactid="445">
+                      <div class="Card-top-left" data-reactid="446">
+                        <figure class="Card-top-badge" data-reactid="447"><img
+                            src="https://static.platzi.com/static/website/v2/images/avatar_default.afdd5b436fc2.png"
+                            alt="Jose Alejandro Rivillas" data-reactid="448" /></figure>
+                        <div class="Card-top-name" data-reactid="449">Jose Alejandro Rivillas</div>
+                        <div class="Card-top-role" data-reactid="450">Estudiante</div>
+                      </div>
+                      <div class="Card-top-right" data-reactid="451"><span class="Card-top-right-dot"
+                          data-reactid="452">·</span><span data-reactid="453">hace 3 días</span></div><a
+                        class="Card-anchor" href="/comentario/873800/" target="_blank" data-reactid="454"></a>
+                    </div>
+                    <div class="Card-middle" data-reactid="455">
+                      <div class="Card-content" data-reactid="456">Hola. ¿La saturación y la luminosidad están
+                        directamente relacionadas?
+                        A mayor saturació, mayor…?</div><a class="Card-anchor" href="/comentario/873800/"
+                        target="_blank" data-reactid="457"></a>
+                    </div>
+                    <div class="Card-bottom" data-reactid="458">
+                      <div class="Card-bottom-left" data-reactid="459">
+                        <div class="Card-bottom-star" data-reactid="460">
+                          <div class="Star is-level-1 is-small is-card" data-reactid="461"><span class="Star-heart"
+                              data-reactid="462"></span><span class="Star-number" data-reactid="463">1</span></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="Card" data-reactid="464">
+                    <div class="Card-top" data-reactid="465">
+                      <div class="Card-top-left" data-reactid="466">
+                        <figure class="Card-top-badge" data-reactid="467"><img
+                            src="https://static.platzi.com/media/avatars/avatars/romerojosefr_7feeef90-b928-4c70-8a62-f07eb6292c58"
+                            alt="romerojosefr" data-reactid="468" /></figure>
+                        <div class="Card-top-name" data-reactid="469">romerojosefr</div>
+                        <div class="Card-top-role" data-reactid="470">Estudiante</div>
+                      </div>
+                      <div class="Card-top-right" data-reactid="471"><span class="Card-top-right-dot"
+                          data-reactid="472">·</span><span data-reactid="473">hace 3 meses</span></div><a
+                        class="Card-anchor" href="/comentario/766984/" target="_blank" data-reactid="474"></a>
+                    </div>
+                    <div class="Card-middle" data-reactid="475">
+                      <div class="Card-content" data-reactid="476">Tengo una duda… los ángulos también pueden ser
+                        descriptivos, narrativos o expresivos? porque en si tanto los planos como los ángulos des...
+                      </div><a class="Card-anchor" href="/comentario/766984/" target="_blank" data-reactid="477"></a>
+                    </div>
+                    <div class="Card-bottom" data-reactid="478">
+                      <div class="Card-bottom-left" data-reactid="479">
+                        <div class="Card-bottom-star" data-reactid="480">
+                          <div class="Star is-level-1 is-small is-card" data-reactid="481"><span class="Star-heart"
+                              data-reactid="482"></span><span class="Star-number" data-reactid="483">1</span></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="Card" data-reactid="484">
+                    <div class="Card-top" data-reactid="485">
+                      <div class="Card-top-left" data-reactid="486">
+                        <figure class="Card-top-badge" data-reactid="487"><img
+                            src="https://static.platzi.com/media/avatars/avatars/nataliavillamil_ef886126-8309-4af1-8963-e28855b14b67.jpg"
+                            alt="Natalia Villamil Piñeros" data-reactid="488" /></figure>
+                        <div class="Card-top-name" data-reactid="489">Natalia Villamil Piñeros</div>
+                        <div class="Card-top-role" data-reactid="490">Estudiante</div>
+                      </div>
+                      <div class="Card-top-right" data-reactid="491"><span class="Card-top-right-dot"
+                          data-reactid="492">·</span><span data-reactid="493">hace 3 meses</span></div><a
+                        class="Card-anchor" href="/comentario/762507/" target="_blank" data-reactid="494"></a>
+                    </div>
+                    <div class="Card-middle" data-reactid="495">
+                      <div class="Card-content" data-reactid="496">¿si le tomo foto a mi dedo y se enfoca mas o se ve
+                        las la uña eso seria un plano detalle?</div><a class="Card-anchor" href="/comentario/762507/"
+                        target="_blank" data-reactid="497"></a>
+                    </div>
+                    <div class="Card-bottom" data-reactid="498">
+                      <div class="Card-bottom-left" data-reactid="499">
+                        <div class="Card-bottom-star" data-reactid="500">
+                          <div class="Star is-level-1 is-small is-card" data-reactid="501"><span class="Star-heart"
+                              data-reactid="502"></span><span class="Star-number" data-reactid="503">2</span></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="Card" data-reactid="504">
+                    <div class="Card-top" data-reactid="505">
+                      <div class="Card-top-left" data-reactid="506">
+                        <figure class="Card-top-badge" data-reactid="507"><img
+                            src="https://static.platzi.com/media/avatars/avatars/jose.car10z_6bcef937-5b16-4405-919d-432c9a3e6d5a.jpg"
+                            alt="josecarlozmx" data-reactid="508" /></figure>
+                        <div class="Card-top-name" data-reactid="509">josecarlozmx</div>
+                        <div class="Card-top-role" data-reactid="510">Estudiante</div>
+                      </div>
+                      <div class="Card-top-right" data-reactid="511"><span class="Card-top-right-dot"
+                          data-reactid="512">·</span><span data-reactid="513">hace 3 meses</span></div><a
+                        class="Card-anchor" href="/comentario/755641/" target="_blank" data-reactid="514"></a>
+                    </div>
+                    <div class="Card-middle" data-reactid="515">
+                      <div class="Card-content" data-reactid="516">Por qué no está la información de La Luz en los
+                        Archivos ??</div><a class="Card-anchor" href="/comentario/755641/" target="_blank"
+                        data-reactid="517"></a>
+                    </div>
+                    <div class="Card-bottom" data-reactid="518">
+                      <div class="Card-bottom-left" data-reactid="519">
+                        <div class="Card-bottom-star" data-reactid="520">
+                          <div class="Star is-level-1 is-small is-card" data-reactid="521"><span class="Star-heart"
+                              data-reactid="522"></span><span class="Star-number" data-reactid="523">1</span></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="Card" data-reactid="524">
+                    <div class="Card-top" data-reactid="525">
+                      <div class="Card-top-left" data-reactid="526">
+                        <figure class="Card-top-badge" data-reactid="527"><img
+                            src="https://static.platzi.com/media/avatars/avatars/jose.car10z_6bcef937-5b16-4405-919d-432c9a3e6d5a.jpg"
+                            alt="josecarlozmx" data-reactid="528" /></figure>
+                        <div class="Card-top-name" data-reactid="529">josecarlozmx</div>
+                        <div class="Card-top-role" data-reactid="530">Estudiante</div>
+                      </div>
+                      <div class="Card-top-right" data-reactid="531"><span class="Card-top-right-dot"
+                          data-reactid="532">·</span><span data-reactid="533">hace 3 meses</span></div><a
+                        class="Card-anchor" href="/comentario/755377/" target="_blank" data-reactid="534"></a>
+                    </div>
+                    <div class="Card-middle" data-reactid="535">
+                      <div class="Card-content" data-reactid="536">Existen otros ángulos?</div><a class="Card-anchor"
+                        href="/comentario/755377/" target="_blank" data-reactid="537"></a>
+                    </div>
+                    <div class="Card-bottom" data-reactid="538">
+                      <div class="Card-bottom-left" data-reactid="539">
+                        <div class="Card-bottom-star" data-reactid="540">
+                          <div class="Star is-level-1 is-small is-card" data-reactid="541"><span class="Star-heart"
+                              data-reactid="542"></span><span class="Star-number" data-reactid="543">1</span></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="Card" data-reactid="544">
+                    <div class="Card-top" data-reactid="545">
+                      <div class="Card-top-left" data-reactid="546">
+                        <figure class="Card-top-badge" data-reactid="547"><img
+                            src="https://static.platzi.com/media/avatars/xime-rodriguez_7f70497c-0a44-4d65-b25a-c7385a0e6793"
+                            alt="xime-rodriguez" data-reactid="548" /></figure>
+                        <div class="Card-top-name" data-reactid="549">xime-rodriguez</div>
+                        <div class="Card-top-role" data-reactid="550">Estudiante</div>
+                      </div>
+                      <div class="Card-top-right" data-reactid="551"><span class="Card-top-right-dot"
+                          data-reactid="552">·</span><span data-reactid="553">hace 4 meses</span></div><a
+                        class="Card-anchor" href="/comentario/724484/" target="_blank" data-reactid="554"></a>
+                    </div>
+                    <div class="Card-middle" data-reactid="555">
+                      <div class="Card-content" data-reactid="556">Debo tener en cuenta el escenario donde voy a gravar
+                        o como tomo en cuenta el tema de las lineas en la composicion?</div><a class="Card-anchor"
+                        href="/comentario/724484/" target="_blank" data-reactid="557"></a>
+                    </div>
+                    <div class="Card-bottom" data-reactid="558">
+                      <div class="Card-bottom-left" data-reactid="559">
+                        <div class="Card-bottom-star" data-reactid="560">
+                          <div class="Star is-level-1 is-small is-card" data-reactid="561"><span class="Star-heart"
+                              data-reactid="562"></span><span class="Star-number" data-reactid="563">1</span></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="Card" data-reactid="564">
+                    <div class="Card-top" data-reactid="565">
+                      <div class="Card-top-left" data-reactid="566">
+                        <figure class="Card-top-badge" data-reactid="567"><img
+                            src="https://static.platzi.com/media/avatars/avatars/avid-patino_a1831bf7-d28f-4953-8efa-d27657d76e3c"
+                            alt="David-patino" data-reactid="568" /></figure>
+                        <div class="Card-top-name" data-reactid="569">David-patino</div>
+                        <div class="Card-top-role" data-reactid="570">Estudiante</div>
+                      </div>
+                      <div class="Card-top-right" data-reactid="571"><span class="Card-top-right-dot"
+                          data-reactid="572">·</span><span data-reactid="573">hace 4 meses</span></div><a
+                        class="Card-anchor" href="/comentario/712903/" target="_blank" data-reactid="574"></a>
+                    </div>
+                    <div class="Card-middle" data-reactid="575">
+                      <div class="Card-content" data-reactid="576">¿saben como se llamaría ese efecto que se genera con
+                        la musica?</div><a class="Card-anchor" href="/comentario/712903/" target="_blank"
+                        data-reactid="577"></a>
+                    </div>
+                    <div class="Card-bottom" data-reactid="578">
+                      <div class="Card-bottom-left" data-reactid="579">
+                        <div class="Card-bottom-star" data-reactid="580">
+                          <div class="Star is-level-1 is-small is-card" data-reactid="581"><span class="Star-heart"
+                              data-reactid="582"></span><span class="Star-number" data-reactid="583">1</span></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="Card" data-reactid="584">
+                    <div class="Card-top" data-reactid="585">
+                      <div class="Card-top-left" data-reactid="586">
+                        <figure class="Card-top-badge" data-reactid="587"><img
+                            src="https://static.platzi.com/media/avatars/avatars/serrano-munoz-jose_38362fd5-4b78-40ed-b12f-7ee52aa1b7c0"
+                            alt="Serrano Muñoz Jose" data-reactid="588" /></figure>
+                        <div class="Card-top-name" data-reactid="589">Serrano Muñoz Jose</div>
+                        <div class="Card-top-role" data-reactid="590">Estudiante</div>
+                      </div>
+                      <div class="Card-top-right" data-reactid="591"><span class="Card-top-right-dot"
+                          data-reactid="592">·</span><span data-reactid="593">hace 6 meses</span></div><a
+                        class="Card-anchor" href="/comentario/611613/" target="_blank" data-reactid="594"></a>
+                    </div>
+                    <div class="Card-middle" data-reactid="595">
+                      <div class="Card-content" data-reactid="596">Que es la realidad perse ?</div><a
+                        class="Card-anchor" href="/comentario/611613/" target="_blank" data-reactid="597"></a>
+                    </div>
+                    <div class="Card-bottom" data-reactid="598">
+                      <div class="Card-bottom-left" data-reactid="599">
+                        <div class="Card-bottom-star" data-reactid="600">
+                          <div class="Star is-level-1 is-small is-card" data-reactid="601"><span class="Star-heart"
+                              data-reactid="602"></span><span class="Star-number" data-reactid="603">4</span></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="Card" data-reactid="604">
+                    <div class="Card-top" data-reactid="605">
+                      <div class="Card-top-left" data-reactid="606">
+                        <figure class="Card-top-badge" data-reactid="607"><img
+                            src="https://static.platzi.com/media/avatars/avatars/david-flores48_78d3b4ce-efb5-4b49-b4ff-213a18fd14ba.jpg"
+                            alt="david-flores48" data-reactid="608" /></figure>
+                        <div class="Card-top-name" data-reactid="609">david-flores48</div>
+                        <div class="Card-top-role" data-reactid="610">Estudiante</div>
+                      </div>
+                      <div class="Card-top-right" data-reactid="611"><span class="Card-top-right-dot"
+                          data-reactid="612">·</span><span data-reactid="613">hace 7 meses</span></div><a
+                        class="Card-anchor" href="/comentario/606306/" target="_blank" data-reactid="614"></a>
+                    </div>
+                    <div class="Card-middle" data-reactid="615">
+                      <div class="Card-content" data-reactid="616">entonces ¿a mayor distancia focal (más zoom) menor
+                        profundidad de campo?</div><a class="Card-anchor" href="/comentario/606306/" target="_blank"
+                        data-reactid="617"></a>
+                    </div>
+                    <div class="Card-bottom" data-reactid="618">
+                      <div class="Card-bottom-left" data-reactid="619">
+                        <div class="Card-bottom-star" data-reactid="620">
+                          <div class="Star is-level-1 is-small is-card" data-reactid="621"><span class="Star-heart"
+                              data-reactid="622"></span><span class="Star-number" data-reactid="623">2</span></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="Card" data-reactid="624">
+                    <div class="Card-top" data-reactid="625">
+                      <div class="Card-top-left" data-reactid="626">
+                        <figure class="Card-top-badge" data-reactid="627"><img
+                            src="https://static.platzi.com/media/avatars/avatars/david-flores48_78d3b4ce-efb5-4b49-b4ff-213a18fd14ba.jpg"
+                            alt="david-flores48" data-reactid="628" /></figure>
+                        <div class="Card-top-name" data-reactid="629">david-flores48</div>
+                        <div class="Card-top-role" data-reactid="630">Estudiante</div>
+                      </div>
+                      <div class="Card-top-right" data-reactid="631"><span class="Card-top-right-dot"
+                          data-reactid="632">·</span><span data-reactid="633">hace 7 meses</span></div><a
+                        class="Card-anchor" href="/comentario/605733/" target="_blank" data-reactid="634"></a>
+                    </div>
+                    <div class="Card-middle" data-reactid="635">
+                      <div class="Card-content" data-reactid="636">Entonces, según entiendo, las características de la
+                        imagen, tales como denotación y la connotación, así como los Elementos Sonoros, corre...</div><a
+                        class="Card-anchor" href="/comentario/605733/" target="_blank" data-reactid="637"></a>
+                    </div>
+                    <div class="Card-bottom" data-reactid="638">
+                      <div class="Card-bottom-left" data-reactid="639">
+                        <div class="Card-bottom-star" data-reactid="640">
+                          <div class="Star is-level-1 is-small is-card" data-reactid="641"><span class="Star-heart"
+                              data-reactid="642"></span><span class="Star-number" data-reactid="643">1</span></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+  </section><!-- <script src="https://static.platzi.com/static/js/libs/jquery-2.1.1.min.e40ec2161fe7.js"></script> -->
+  <script>
+    window.header = {
+      "live": {
+        "active": false,
+        "time": "",
+        "url": "",
+        "title": ""
+      },
+      "menuItems": [{
+        "name": "Clases",
+        "url": "/clases/"
+      }, {
+        "name": "Blog",
+        "url": "/blog/"
+      }, {
+        "name": "Foro",
+        "url": "/foro/"
+      }, {
+        "name": "Agenda",
+        "url": "/agenda/"
+      }, {
+        "name": "TV",
+        "url": "/live/"
+      }],
+      "loggedMenu": [{
+        "name": "Empleos",
+        "icon": "icon-suitecase_B",
+        "url": "/empleos/"
+      }, {
+        "name": "Mensajes Directos",
+        "type": "direct_messages",
+        "icon": "icon-cloud",
+        "url": "/direct-messages/"
+      }, {
+        "name": "Obt\u00e9n 1 mes gratis",
+        "icon": "icon-gift_A",
+        "type": "referal",
+        "url": "/mi-suscripcion/referidos/"
+      }, {
+        "name": "Mi Suscripci\u00f3n",
+        "icon": "icon-platzi",
+        "type": "my_subscription",
+        "url": "/mi-suscripcion/"
+      }, {
+        "name": "Cont\u00e1ctanos",
+        "icon": "icon-cloud-smile",
+        "type": "contact",
+        "slug": ""
+      }],
+      "enableSearch": true,
+      "enableSubscription": true,
+      "isLogged": true,
+      "messages": {
+        "contactus_title": "\u00bfTienes dudas o quieres comunicarte con nosotros?",
+        "contactus_subtitle": "Elige el medio que m\u00e1s te convenga, te sugerimos ",
+        "write": "Escr\u00edbenos",
+        "dm": "Mensaje Directo",
+        "telephone": "Tel\u00e9fono",
+        "continue_watching": "Continua viendo",
+        "all_courses": "Ver todos mis cursos",
+        "username": "\u00a1Hola, {user_name}!",
+        "subscriptionTime": "Tienes {subscription_time} d\u00edas de tu Plan",
+        "view_profile": "Ver mi Perfil",
+        "logout": "Cerrar sesi\u00f3n",
+        "login": "Iniciar sesi\u00f3n",
+        "live_in": "En Vivo",
+        "live": "live",
+        "menu": "Men\u00fa",
+        "view_plans": "Quiero saber m\u00e1s",
+        "courses": "Cursos",
+        "more_results": "M\u00e1s resultados",
+        "careers": "Carreras",
+        "no_results": "No tenemos resultados destacados",
+        "avanced_search": "Presiona ENTER para una busqueda avanzada",
+        "init_plan": "Iniciar mi plan",
+        "init_plan2": "Planes",
+        "switch_language": "Do you want to switch to Platzi in English?",
+        "switch_english": "Yes, switch to English",
+        "user_login": "Inicia sesi\u00f3n o crea tu cuenta",
+        "nextPage": "Siguiente",
+        "searchPlaceholder": "Buscar en Platzi",
+        "login_live_text": "Participa en sesiones en vivo y foros de Platzi",
+        "login_courses_text": "Accede a m\u00e1s de 120 cursos",
+        "login_opportunities": "Accede a mejores oportunidades laborales",
+        "mark_as_read": "Marcar todas como le\u00eddas",
+        "title": "Tus notificaciones",
+        "hide": "Ocultar",
+        "hide_description": "Ocultar esta notificaci\u00f3n del historial",
+        "undo": "Deshacer",
+        "notification_hidden": "Se ocult\u00f3 la notificati\u00f3n.",
+        "notification_empty_title": "\u00a1A\u00fan no tienes notificaciones!",
+        "notification_emtpy_subtitle": "Participa, comparte y discute para empezar a recibir notificaciones",
+        "see_all": "Ver todas",
+        "notifications_disabled_title": "\u00a1Tus notificaciones est\u00e1n desactivadas!",
+        "notification_not_available_title": "\u00a1Lo sentimos!",
+        "notifications_not_available_subtitle": "El contenido al que intentas acceder no se encuentra disponible.",
+        "notifications_disabled_subtitle": "Para recibir nuevamente tus notificaciones debes activarlas en <span class=\"icon-cog\"></span>",
+        "required_courses": "Cursos Obrigat\u00f3rios",
+        "awardsText": "Reconocidos y premiados por",
+        "CertifiersText": "Certificadores oficiales en tecnolog\u00edas",
+        "fromLatam": "De LATAM con ",
+        "toTheWorld": "para el mundo",
+        "FooterShareLink": "Comparte este link y por cada registro con esta URL te damos un mes",
+        "FooterCopyLink": "ingrese un link",
+        "qualityEducation": "Transformamos la econom\u00eda de nuestros pa\u00edses entrenando a la pr\u00f3xima generaci\u00f3n de profesionales en tecnolog\u00eda.",
+        "FooterfollowUs": "Aprende en nuestras redes:",
+        "FooterChangeLang": "Cambiar idioma",
+        "SubscribeSectionTitle": "Ent\u00e9rate de todas las novedades en educaci\u00f3n, negocios y tecnolog\u00eda",
+        "SubscribeSectionCTA": "Suscr\u00edbete",
+        "YourEmail": "Correo electr\u00f3nico",
+        "EnterYourEmail": "Ingresa tu correo electr\u00f3nico",
+        "LoginSocial-facebook-login": "Inicia sesi\u00f3n con Facebook",
+        "LoginSocial-twitter-login": "Inicia sesi\u00f3n con Twitter",
+        "login_email": "Tu email",
+        "login_password": "Tu contrase\u00f1a",
+        "LoginWithEmail-login": "Inicia sesi\u00f3n",
+        "LoginWithEmail-lostpassword": "\u00bfOlvidaste tu contrase\u00f1a?",
+        "AccountFooter-title-register": "\u00bfA\u00fan no tienes cuenta en Platzi?",
+        "AccountFooter-register": "Reg\u00edstrate",
+        "AccountFooter-login": "Inicia tu sesi\u00f3n",
+        "AccountFooter-title-login ": "\u00bfYa tienes una cuenta?",
+        "RegisterButton-email": "Reg\u00edstrate con tu Email",
+        "LoginSocial-twitter-register": "Reg\u00edstrate con Twitter",
+        "LoginSocial-facebook-register": " Reg\u00edstrate con Facebook",
+        "planExpert": "Plan Expert",
+        "planExpertText": "Desarrolla tus habilidades en programaci\u00f3n, dise\u00f1o, producci\u00f3n audiovisual, marketing y muchas m\u00e1s. Mide tu progreso y recibe certificados con tu nombre a finalizar cada curso."
+      },
+      "locale": "es",
+      "isHispanic": true,
+      "country_name": "Mexico",
+      "options": [{
+        "title": "Preguntas frecuentes",
+        "url": "/faq/"
+      }, {
+        "title": "Cont\u00e1ctanos",
+        "url": "/contacto/"
+      }, {
+        "title": "Prensa",
+        "url": "/prensa/"
+      }, {
+        "title": "Conferencias",
+        "url": "/conf/todas/"
+      }, {
+        "title": "T\u00e9rminos y Condiciones",
+        "url": "/tos/"
+      }, {
+        "title": "Privacidad",
+        "url": "/privacidad/"
+      }, {
+        "title": "Estudiantes",
+        "url": "/historias/"
+      }, {
+        "title": "Hola",
+        "url": "/hola/"
+      }],
+      "socials": [{
+        "icon": "icon-twt",
+        "url": "https://twitter.com/platzi"
+      }, {
+        "icon": "icon-youtube-play",
+        "url": "https://www.youtube.com/channel/UC55-mxUj5Nj3niXFReG44OQ"
+      }, {
+        "icon": "icon-fcbk",
+        "url": "https://facebook.com/platzi"
+      }, {
+        "icon": "icon-instagram",
+        "url": "https://www.instagram.com/platzi/"
+      }],
+      "awards": [{
+        "logo": "https://static.platzi.com/static/images/footer/yc.886de721d220.png",
+        "name": "Y Combinator",
+        "url": "https://platzi.com/blog/platzi-y-combinator/"
+      }, {
+        "logo": "https://static.platzi.com/static/images/footer/asugsv.8d8dcbc1fa78.png",
+        "name": "ASU + GSV Summit",
+        "url": "https://platzi.com/blog/platzi-gana-premio-educacion/"
+      }],
+      "languages": [{
+        "url": "https://platzi.com.br",
+        "lang_name": "Portugu\u00e9s",
+        "lang": "pt",
+        "flag": "https://static.platzi.com/static/images/flags/brazil.5301e426d99b.jpg"
+      }, {
+        "url": "https://platzi.com",
+        "lang_name": "Espa\u00f1ol",
+        "lang": "es",
+        "flag": "https://static.platzi.com/static/images/flags/espana.367527dfff74.jpg"
+      }, {
+        "url": "https://courses.platzi.com",
+        "lang_name": "Ingl\u00e9s",
+        "lang": "en",
+        "flag": "https://static.platzi.com/static/images/flags/united-states.336e5b9b3848.jpg"
+      }],
+      "organization_id": 1,
+      "categories": [{
+        "color": "#33b13a",
+        "name": "Desarrollo e ingenier\u00eda",
+        "url": "/categorias/desarrollo/"
+      }, {
+        "color": "#6b407e",
+        "name": "Dise\u00f1o y UX",
+        "url": "/categorias/diseno/"
+      }, {
+        "color": "#29b8e8",
+        "name": "Marketing",
+        "url": "/categorias/marketing/"
+      }, {
+        "color": "#f5c443",
+        "name": "Negocios y emprendimiento",
+        "url": "/categorias/negocios/"
+      }, {
+        "color": "#98ca3f",
+        "name": "Comunidad",
+        "url": "/categorias/comunidad/"
+      }, {
+        "color": "#fa7800",
+        "name": "Producci\u00f3n Audiovisual",
+        "url": "/categorias/produccion-audiovisual/"
+      }, {
+        "color": "#cb161d",
+        "name": "Crecimiento Profesional",
+        "url": "/categorias/crecimiento-profesional/"
+      }],
+      "official_companies": [{
+        "logo": "https://static.platzi.com/static/images/footer/logo-ibm.a5ea724e8e90.png",
+        "name": "IBM",
+        "url": ""
+      }, {
+        "logo": "https://static.platzi.com/static/images/footer/logo-unity.5a9d7d021565.png",
+        "name": "Unity",
+        "url": ""
+      }],
+      "logo": "https://static.platzi.com/static/images/footer/logo.a76b2a87162b.png",
+      "notifications": {
+        "notifications": [{
+          "id": 125191,
+          "avatares": [],
+          "date": "2019-12-22T22:23:46.014701Z",
+          "read": false,
+          "subtitle": "Reto Semanal: Creadores Platzi",
+          "title": "<strong>Edwin</strong> public\u00f3 un nuevo post",
+          "url": "/tinkerbell/blog-read/4626/?notification_id=125191",
+          "type": "newspaper"
+        }, {
+          "id": 125161,
+          "avatares": [],
+          "date": "2019-12-22T21:02:58.306429Z",
+          "read": false,
+          "subtitle": "La Guia Definitiva para Posicionar tu Marca en Medios Digitales",
+          "title": "<strong>Juan David</strong> public\u00f3 un nuevo post",
+          "url": "/tinkerbell/blog-read/3914/?notification_id=125161",
+          "type": "newspaper"
+        }, {
+          "id": 125082,
+          "avatares": [],
+          "date": "2019-12-22T16:41:36.725289Z",
+          "read": false,
+          "subtitle": "\u00bfC\u00f3mo se levanta una ronda de inversi\u00f3n?",
+          "title": "<strong>Fabi\u00e1n</strong> public\u00f3 un nuevo post",
+          "url": "/tinkerbell/blog-read/4076/?notification_id=125082",
+          "type": "newspaper"
+        }, {
+          "id": 125034,
+          "avatares": [],
+          "date": "2019-12-22T14:36:36.599546Z",
+          "read": false,
+          "subtitle": "Conoce personas incre\u00edbles como t\u00fa.",
+          "title": "<strong>Carolina</strong> public\u00f3 un nuevo post",
+          "url": "/tinkerbell/blog-read/3527/?notification_id=125034",
+          "type": "newspaper"
+        }],
+        "enabled": true,
+        "new": true,
+        "settings": "/@cragser/edit/",
+        "emptyState": {
+          "recommendations": []
+        },
+        "users": {},
+        "page": 1,
+        "pageCount": 2,
+        "url": "/clases/notificaciones/"
+      },
+      "notifications_feature": true
+    };
+    var lang = "es";
+    var NOTIFICATION_URL = "https://tinkerbell.platzi.com";
+  </script>
+  <script>
+    window.contactInfo = {
+      hasSubscription: true,
+      isAuthenticated: true,
+      country: "mexico",
+      flag: "https://static.platzi.com/static/images/languajes/mexico.jpg",
+      isOrganizer: false,
+      lang: "es",
+      i18n: {
+        'contactus_title': '¿Tienes dudas o quieres comunicarte con nosotros?',
+        'contactus_subtitle': 'Elige el medio que más te convenga, te sugerimos ',
+        'write': 'Escríbenos',
+        'dm': 'Mensaje Directo',
+        'telephone': 'Teléfono',
+        'acceptTerms': 'Nunca pares de aprender sobre la seguridad de tus datos',
+        'agree': 'Aquí puedes ver nuestros {terms} y actualizaciones de nuestras {privacy}',
+        'terms': 'Términos de Uso',
+        'privacy': 'políticas de privacidad',
+        'accept': 'Términos de Uso',
+        'planExpert': 'Plan Expert',
+        'planExpertText': 'Desarrolla tus habilidades en programación, diseño, producción audiovisual, marketing y muchas más. Mide tu progreso y recibe certificados con tu nombre a finalizar cada curso.'
+      },
+      enabled: true,
+      accepted_gdpr: true,
+      userId: '693233',
+    }
+    window.isHispanic = true
+  </script>
+  <link rel="manifest" href="/onesignal.json" />
+  <style type="text/css" defer async>
+    .onesignal-popover-dialog {
+      pointer-events: none !important;
+    }
+
+    .onesignal-popover-dialog>#normal-popover {
+      pointer-events: auto !important;
+    }
+  </style>
+  <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async></script>
+  <script type="text/javascript" defer async>
+    var OneSignal = window.OneSignal || [];
+    OneSignal.push(function () {
+      OneSignal.init({
+        appId: "8adc9051-61fc-438e-b19a-739a6bf780e5",
+      });
+    });
+  </script>
+  <script>
+    OneSignal.push(function () {
+      OneSignal.sendTags({
+        userId: 'cragser',
+        userType: 'annual_subscription'
+      }).then(function (tagsSent) {
+        // Callback called when tags have finished sending
+        console.log(tagsSent);
+      });
+    });
+  </script>
+  <script type="text/javascript">
+    window.initialData = {
+      "initialState": {
+        "activeTab": "materials",
+        "user": {
+          "name": "cragser",
+          "isOrganizer": false,
+          "platziRank": 3781
+        },
+        "tabs": [{
+          "prefix": "materials",
+          "name": "Contenido del Curso"
+        }, {
+          "prefix": "tutorials",
+          "name": "Tutoriales de estudiantes"
+        }, {
+          "prefix": "questions",
+          "name": "Preguntas de estudiantes"
+        }],
+        "tutorials": {
+          "pagesCount": 1,
+          "results": [{
+            "id": 4594,
+            "title": "C\u00f3mo conseguir una buena fotograf\u00eda",
+            "createdAt": "2019-11-06T16:22:22.434967Z",
+            "nLikes": 1,
+            "authorId": 550361,
+            "type": "text",
+            "detailUrl": "/tutoriales/1260-lenguaje-audiovisual/4594-como-conseguir-una-buena-fotografia/",
+            "slug": "como-conseguir-una-buena-fotografia"
+          }, {
+            "id": 2795,
+            "title": "Dorothea Lange y la madre migrante en La Gran Depresi\u00f3n en Estados Unidos",
+            "createdAt": "2018-08-26T02:10:41.321328Z",
+            "nLikes": 2,
+            "authorId": 307737,
+            "type": "text",
+            "detailUrl": "/tutoriales/1260-lenguaje-audiovisual/2795-dorothea-lange-y-la-madre-migrante-en-la-gran-depresion-en-estados-unidos/",
+            "slug": "dorothea-lange-y-la-madre-migrante-en-la-gran-depresion-en-estados-unidos"
+          }],
+          "likes": [],
+          "url": "/v2/contributions/list/"
+        },
+        "questions": {
+          "pagination": {
+            "page": 1,
+            "nPages": 5,
+            "payload": {
+              "url": "/clases/course/1260/questions/",
+              "parameters": [{
+                "name": "course_id",
+                "value": 1260
+              }, {
+                "name": "material_id",
+                "value": null
+              }]
+            }
+          },
+          "cards": [{
+            "breadcrumb": [],
+            "author": {
+              "name": "Jose Alejandro Rivillas",
+              "avatar": "https://static.platzi.com/static/website/v2/images/avatar_default.afdd5b436fc2.png",
+              "role": "Estudiante"
+            },
+            "timestamp": "2019-12-20T01:39:56.868911Z",
+            "content": "Hola. \u00bfLa saturaci\u00f3n y la luminosidad est\u00e1n directamente relacionadas?\nA mayor saturaci\u00f3, mayor\u2026?",
+            "tags": [],
+            "objectType": "discussion",
+            "id": 75673,
+            "liked": false,
+            "nLikes": 1,
+            "nSubcards": 1,
+            "detailUrl": "/comentario/873800/",
+            "actions": {
+              "likeable": true,
+              "commentable": false,
+              "bookmarkable": false,
+              "shareable": false,
+              "deletable": false
+            },
+            "subcards": [],
+            "payload": {
+              "create": {
+                "url": "/comments/add/card/",
+                "parameters": [{
+                  "name": "object_type",
+                  "value": "material"
+                }, {
+                  "name": "object_id",
+                  "value": 10691
+                }, {
+                  "name": "parent_id",
+                  "value": 873800
+                }, {
+                  "name": "course_id",
+                  "value": 1260
+                }]
+              },
+              "delete": {
+                "url": "/discussions/75673/delete/",
+                "parameters": []
+              }
+            }
+          }, {
+            "breadcrumb": [],
+            "author": {
+              "name": "romerojosefr",
+              "avatar": "https://static.platzi.com/media/avatars/avatars/romerojosefr_7feeef90-b928-4c70-8a62-f07eb6292c58",
+              "role": "Estudiante"
+            },
+            "timestamp": "2019-10-04T18:35:29.252503Z",
+            "content": "Tengo una duda\u2026 los \u00e1ngulos tambi\u00e9n pueden ser descriptivos, narrativos  o expresivos? porque en si tanto los planos como los \u00e1ngulos des...",
+            "tags": [],
+            "objectType": "discussion",
+            "id": 69966,
+            "liked": false,
+            "nLikes": 1,
+            "nSubcards": 3,
+            "detailUrl": "/comentario/766984/",
+            "actions": {
+              "likeable": true,
+              "commentable": false,
+              "bookmarkable": false,
+              "shareable": false,
+              "deletable": false
+            },
+            "subcards": [],
+            "payload": {
+              "create": {
+                "url": "/comments/add/card/",
+                "parameters": [{
+                  "name": "object_type",
+                  "value": "material"
+                }, {
+                  "name": "object_id",
+                  "value": 10686
+                }, {
+                  "name": "parent_id",
+                  "value": 766984
+                }, {
+                  "name": "course_id",
+                  "value": 1260
+                }]
+              },
+              "delete": {
+                "url": "/discussions/69966/delete/",
+                "parameters": []
+              }
+            }
+          }, {
+            "breadcrumb": [],
+            "author": {
+              "name": "Natalia Villamil Pi\u00f1eros",
+              "avatar": "https://static.platzi.com/media/avatars/avatars/nataliavillamil_ef886126-8309-4af1-8963-e28855b14b67.jpg",
+              "role": "Estudiante"
+            },
+            "timestamp": "2019-10-01T23:17:23.880622Z",
+            "content": "\u00bfsi le tomo foto a mi dedo y se enfoca mas o se ve las la u\u00f1a eso seria un plano detalle?",
+            "tags": [],
+            "objectType": "discussion",
+            "id": 69740,
+            "liked": false,
+            "nLikes": 2,
+            "nSubcards": 2,
+            "detailUrl": "/comentario/762507/",
+            "actions": {
+              "likeable": true,
+              "commentable": false,
+              "bookmarkable": false,
+              "shareable": false,
+              "deletable": false
+            },
+            "subcards": [],
+            "payload": {
+              "create": {
+                "url": "/comments/add/card/",
+                "parameters": [{
+                  "name": "object_type",
+                  "value": "material"
+                }, {
+                  "name": "object_id",
+                  "value": 10685
+                }, {
+                  "name": "parent_id",
+                  "value": 762507
+                }, {
+                  "name": "course_id",
+                  "value": 1260
+                }]
+              },
+              "delete": {
+                "url": "/discussions/69740/delete/",
+                "parameters": []
+              }
+            }
+          }, {
+            "breadcrumb": [],
+            "author": {
+              "name": "josecarlozmx",
+              "avatar": "https://static.platzi.com/media/avatars/avatars/jose.car10z_6bcef937-5b16-4405-919d-432c9a3e6d5a.jpg",
+              "role": "Estudiante"
+            },
+            "timestamp": "2019-09-26T22:29:27.000280Z",
+            "content": "Por qu\u00e9 no est\u00e1 la informaci\u00f3n de La Luz en los Archivos ??",
+            "tags": [],
+            "objectType": "discussion",
+            "id": 69356,
+            "liked": false,
+            "nLikes": 1,
+            "nSubcards": 1,
+            "detailUrl": "/comentario/755641/",
+            "actions": {
+              "likeable": true,
+              "commentable": false,
+              "bookmarkable": false,
+              "shareable": false,
+              "deletable": false
+            },
+            "subcards": [],
+            "payload": {
+              "create": {
+                "url": "/comments/add/card/",
+                "parameters": [{
+                  "name": "object_type",
+                  "value": "material"
+                }, {
+                  "name": "object_id",
+                  "value": 10690
+                }, {
+                  "name": "parent_id",
+                  "value": 755641
+                }, {
+                  "name": "course_id",
+                  "value": 1260
+                }]
+              },
+              "delete": {
+                "url": "/discussions/69356/delete/",
+                "parameters": []
+              }
+            }
+          }, {
+            "breadcrumb": [],
+            "author": {
+              "name": "josecarlozmx",
+              "avatar": "https://static.platzi.com/media/avatars/avatars/jose.car10z_6bcef937-5b16-4405-919d-432c9a3e6d5a.jpg",
+              "role": "Estudiante"
+            },
+            "timestamp": "2019-09-26T19:26:45.939969Z",
+            "content": "Existen otros \u00e1ngulos?",
+            "tags": [],
+            "objectType": "discussion",
+            "id": 69337,
+            "liked": false,
+            "nLikes": 1,
+            "nSubcards": 1,
+            "detailUrl": "/comentario/755377/",
+            "actions": {
+              "likeable": true,
+              "commentable": false,
+              "bookmarkable": false,
+              "shareable": false,
+              "deletable": false
+            },
+            "subcards": [],
+            "payload": {
+              "create": {
+                "url": "/comments/add/card/",
+                "parameters": [{
+                  "name": "object_type",
+                  "value": "material"
+                }, {
+                  "name": "object_id",
+                  "value": 10686
+                }, {
+                  "name": "parent_id",
+                  "value": 755377
+                }, {
+                  "name": "course_id",
+                  "value": 1260
+                }]
+              },
+              "delete": {
+                "url": "/discussions/69337/delete/",
+                "parameters": []
+              }
+            }
+          }, {
+            "breadcrumb": [],
+            "author": {
+              "name": "xime-rodriguez",
+              "avatar": "https://static.platzi.com/media/avatars/xime-rodriguez_7f70497c-0a44-4d65-b25a-c7385a0e6793",
+              "role": "Estudiante"
+            },
+            "timestamp": "2019-09-06T18:01:56.382325Z",
+            "content": "Debo tener en cuenta el escenario donde voy a gravar o como tomo en cuenta el tema de las lineas en la composicion?",
+            "tags": [],
+            "objectType": "discussion",
+            "id": 67492,
+            "liked": false,
+            "nLikes": 1,
+            "nSubcards": 1,
+            "detailUrl": "/comentario/724484/",
+            "actions": {
+              "likeable": true,
+              "commentable": false,
+              "bookmarkable": false,
+              "shareable": false,
+              "deletable": false
+            },
+            "subcards": [],
+            "payload": {
+              "create": {
+                "url": "/comments/add/card/",
+                "parameters": [{
+                  "name": "object_type",
+                  "value": "material"
+                }, {
+                  "name": "object_id",
+                  "value": 10687
+                }, {
+                  "name": "parent_id",
+                  "value": 724484
+                }, {
+                  "name": "course_id",
+                  "value": 1260
+                }]
+              },
+              "delete": {
+                "url": "/discussions/67492/delete/",
+                "parameters": []
+              }
+            }
+          }, {
+            "breadcrumb": [],
+            "author": {
+              "name": "David-patino",
+              "avatar": "https://static.platzi.com/media/avatars/avatars/avid-patino_a1831bf7-d28f-4953-8efa-d27657d76e3c",
+              "role": "Estudiante"
+            },
+            "timestamp": "2019-08-29T15:42:15.298745Z",
+            "content": "\u00bfsaben como se llamar\u00eda ese efecto que se genera con la musica?",
+            "tags": [],
+            "objectType": "discussion",
+            "id": 66811,
+            "liked": false,
+            "nLikes": 1,
+            "nSubcards": 1,
+            "detailUrl": "/comentario/712903/",
+            "actions": {
+              "likeable": true,
+              "commentable": false,
+              "bookmarkable": false,
+              "shareable": false,
+              "deletable": false
+            },
+            "subcards": [],
+            "payload": {
+              "create": {
+                "url": "/comments/add/card/",
+                "parameters": [{
+                  "name": "object_type",
+                  "value": "material"
+                }, {
+                  "name": "object_id",
+                  "value": 10694
+                }, {
+                  "name": "parent_id",
+                  "value": 712903
+                }, {
+                  "name": "course_id",
+                  "value": 1260
+                }]
+              },
+              "delete": {
+                "url": "/discussions/66811/delete/",
+                "parameters": []
+              }
+            }
+          }, {
+            "breadcrumb": [],
+            "author": {
+              "name": "Serrano Mu\u00f1oz Jose",
+              "avatar": "https://static.platzi.com/media/avatars/avatars/serrano-munoz-jose_38362fd5-4b78-40ed-b12f-7ee52aa1b7c0",
+              "role": "Estudiante"
+            },
+            "timestamp": "2019-06-11T00:54:41.777828Z",
+            "content": "Que es la realidad perse ?",
+            "tags": [],
+            "objectType": "discussion",
+            "id": 60838,
+            "liked": false,
+            "nLikes": 4,
+            "nSubcards": 2,
+            "detailUrl": "/comentario/611613/",
+            "actions": {
+              "likeable": true,
+              "commentable": false,
+              "bookmarkable": false,
+              "shareable": false,
+              "deletable": false
+            },
+            "subcards": [],
+            "payload": {
+              "create": {
+                "url": "/comments/add/card/",
+                "parameters": [{
+                  "name": "object_type",
+                  "value": "material"
+                }, {
+                  "name": "object_id",
+                  "value": 10683
+                }, {
+                  "name": "parent_id",
+                  "value": 611613
+                }, {
+                  "name": "course_id",
+                  "value": 1260
+                }]
+              },
+              "delete": {
+                "url": "/discussions/60838/delete/",
+                "parameters": []
+              }
+            }
+          }, {
+            "breadcrumb": [],
+            "author": {
+              "name": "david-flores48",
+              "avatar": "https://static.platzi.com/media/avatars/avatars/david-flores48_78d3b4ce-efb5-4b49-b4ff-213a18fd14ba.jpg",
+              "role": "Estudiante"
+            },
+            "timestamp": "2019-06-05T19:44:06.459662Z",
+            "content": "entonces \u00bfa mayor distancia focal (m\u00e1s zoom) menor profundidad de campo?",
+            "tags": [],
+            "objectType": "discussion",
+            "id": 60495,
+            "liked": false,
+            "nLikes": 2,
+            "nSubcards": 1,
+            "detailUrl": "/comentario/606306/",
+            "actions": {
+              "likeable": true,
+              "commentable": false,
+              "bookmarkable": false,
+              "shareable": false,
+              "deletable": false
+            },
+            "subcards": [],
+            "payload": {
+              "create": {
+                "url": "/comments/add/card/",
+                "parameters": [{
+                  "name": "object_type",
+                  "value": "material"
+                }, {
+                  "name": "object_id",
+                  "value": 10688
+                }, {
+                  "name": "parent_id",
+                  "value": 606306
+                }, {
+                  "name": "course_id",
+                  "value": 1260
+                }]
+              },
+              "delete": {
+                "url": "/discussions/60495/delete/",
+                "parameters": []
+              }
+            }
+          }, {
+            "breadcrumb": [],
+            "author": {
+              "name": "david-flores48",
+              "avatar": "https://static.platzi.com/media/avatars/avatars/david-flores48_78d3b4ce-efb5-4b49-b4ff-213a18fd14ba.jpg",
+              "role": "Estudiante"
+            },
+            "timestamp": "2019-06-05T03:13:24.490340Z",
+            "content": "Entonces, seg\u00fan entiendo, las caracter\u00edsticas de la imagen, tales como denotaci\u00f3n y la connotaci\u00f3n, as\u00ed como los Elementos Sonoros, corre...",
+            "tags": [],
+            "objectType": "discussion",
+            "id": 60460,
+            "liked": false,
+            "nLikes": 1,
+            "nSubcards": 1,
+            "detailUrl": "/comentario/605733/",
+            "actions": {
+              "likeable": true,
+              "commentable": false,
+              "bookmarkable": false,
+              "shareable": false,
+              "deletable": false
+            },
+            "subcards": [],
+            "payload": {
+              "create": {
+                "url": "/comments/add/card/",
+                "parameters": [{
+                  "name": "object_type",
+                  "value": "material"
+                }, {
+                  "name": "object_id",
+                  "value": 10684
+                }, {
+                  "name": "parent_id",
+                  "value": 605733
+                }, {
+                  "name": "course_id",
+                  "value": 1260
+                }]
+              },
+              "delete": {
+                "url": "/discussions/60460/delete/",
+                "parameters": []
+              }
+            }
+          }],
+          "type": "questions",
+          "readOnly": true,
+          "i18n": {
+            "locale": "es",
+            "messages": {
+              "cards.submit": "Publicar",
+              "cards.editor.sending": "Enviando",
+              "cards.editor.send": "Enviar",
+              "cards.editor.cancel": "Cancelar",
+              "cards.editor.write.comment": "Escribe tu comentario",
+              "cards.editor.markdown": "Markdown",
+              "cards.editor.preview": "Vista previa",
+              "cards.editor.title": "Titulo",
+              "cards.editor.uploading": "Subiendo",
+              "cards.editor.bold": "Negritas",
+              "cards.editor.italic": "Cursiva",
+              "cards.editor.underline": "Subrayar",
+              "cards.editor.code": "C\u00f3digo",
+              "cards.editor.link": "Enlace",
+              "cards.editor.unorderedList": "Lista desordenada",
+              "cards.editor.orderedList": "Lista Ordenada",
+              "cards.editor.edit": "Editar",
+              "cards.editor.fullScreen": "Pantalla completa",
+              "cards.editor.contract": "Contraer",
+              "cards.editor.questionPlaceholder": "Escribe tu comentario",
+              "cards.editor.quoute": "Citar",
+              "cards.discussion.title": "\u00bfQue duda tienes sobre este contenido?",
+              "cards.comments.title": "\u00bfQu\u00e9 proyecto, enlace o comentario nos ayuda a complementar la clase?",
+              "cards.default.title": "Escribe aqu\u00ed tu pregunta",
+              "cards.share.title": "Obten respuestas m\u00e1s r\u00e1pido compartiendo tus dudas con la comunidad y en tus redes sociales",
+              "cards.share.button": "Copiar URL de mi pregunta",
+              "cards.more": "Ver m\u00e1s respuestas"
+            }
+          },
+          "payload": {
+            "url": "/comments/add/card/",
+            "parameters": [{
+              "name": "object_id",
+              "value": null
+            }, {
+              "name": "object_type",
+              "value": "material"
+            }, {
+              "name": "course_id",
+              "value": 1260
+            }, {
+              "name": "is_discussion",
+              "value": true
+            }]
+          },
+          "currentUser": {
+            "name": "Sergio Daniel Reyes Javier",
+            "avatar": "https://static.platzi.com/media/avatars/avatars/cragser_cb79c06f-1ff7-48fb-9bb5-a29bd2c2b371.jpeg",
+            "role": "student"
+          },
+          "filters": [{
+            "value": "new",
+            "active": true,
+            "label": "nuevos"
+          }, {
+            "value": "top",
+            "active": false,
+            "label": "m\u00e1s votados"
+          }, {
+            "value": "unanswered",
+            "active": false,
+            "label": "sin responder"
+          }]
+        },
+        "course": {
+          "title": "Curso de Introducci\u00f3n al Lenguaje Audiovisual",
+          "badge": "https://static.platzi.com/media/achievements/1260-96b9750a-e31f-4c0e-a6ca-fdacd94b38aa.png",
+          "slug": "lenguaje-audiovisual",
+          "url": "/clases/lenguaje-audiovisual/",
+          "edit": "/clases/courses/1260/edit/",
+          "platziRank": 0,
+          "teachers": [{
+            "avatar": "https://static.platzi.com/media/teachers/Winiberto.JPG",
+            "name": "Ludwin Cuevas"
+          }],
+          "level": {
+            "slug": "b\u00e1sico",
+            "title": "B\u00e1sico"
+          },
+          "progress": {
+            "total": 17,
+            "finished": 17,
+            "breakpoints": [20, 40, 60, 80, 100]
+          },
+          "progressInfo": {
+            "subtitle": "<strong>Tu avance es incre\u00edble,</strong> est\u00e1s por dominar el tema y certificarte",
+            "title": "Bienvenido de vuelta",
+            "cta": {
+              "ctaBtnText": "",
+              "type": "lecture",
+              "url": "/clases/1260-lenguaje-audiovisual/10696-glosario-de-terminos/",
+              "material_id": 10696
+            }
+          },
+          "learningPaths": [{
+            "badge": "https://static.platzi.com/media/learningpath/badges/badge-produccion-video.png",
+            "title": "Producci\u00f3n Audiovisual",
+            "level": "intermediate",
+            "color": "#DE5915",
+            "description": "Aprende los procesos de montaje, producci\u00f3n y postproducci\u00f3n de video, cine y animaci\u00f3n. Domina las mejores t\u00e9cnicas de edici\u00f3n para cada tipo de video.",
+            "url": "/produccion-video/",
+            "courses": [{
+              "badge": "https://static.platzi.com/media/achievements/badge-produccion-audiovisual-255a80f6-2c64-492b-b29d-2c256558d231.png",
+              "title": "Curso de Introducci\u00f3n a la Producci\u00f3n Audiovisual Cinematogr\u00e1fica",
+              "url": "/clases/produccion-audiovisual-cinematografica/",
+              "current": false
+            }, {
+              "badge": "https://static.platzi.com/media/achievements/1260-96b9750a-e31f-4c0e-a6ca-fdacd94b38aa.png",
+              "title": "Curso de Introducci\u00f3n al Lenguaje Audiovisual",
+              "url": "/clases/lenguaje-audiovisual/",
+              "current": true
+            }, {
+              "badge": "https://static.platzi.com/media/achievements/badge-storytelling-f25c9ca5-298e-485d-8470-2c7a532e211c.png",
+              "title": "Curso de Storytelling",
+              "url": "/clases/storytelling/",
+              "current": false
+            }]
+          }, {
+            "badge": "https://static.platzi.com/media/learningpath/badges/badge-produccion-audio.png",
+            "title": "Producci\u00f3n de Audio",
+            "level": "basic",
+            "color": "#ffa33f",
+            "description": "Crea y captura elementos de alta calidad sonora, produce tus propios podcasts y aprende t\u00e9cnicas de post producci\u00f3n de audio utilizando diversas herramientas.",
+            "url": "/produccion-audio/",
+            "courses": [{
+              "badge": "https://static.platzi.com/media/achievements/1327-bf8a7e9d-c534-4618-83a1-8f59dbe53592.png",
+              "title": "Curso B\u00e1sico de Producci\u00f3n de Audio con Pro Tools",
+              "url": "/clases/edicion-protools/",
+              "current": false
+            }, {
+              "badge": "https://static.platzi.com/media/achievements/1260-96b9750a-e31f-4c0e-a6ca-fdacd94b38aa.png",
+              "title": "Curso de Introducci\u00f3n al Lenguaje Audiovisual",
+              "url": "/clases/lenguaje-audiovisual/",
+              "current": true
+            }, {
+              "badge": "https://static.platzi.com/media/achievements/1364-6b54c751-2440-4fb2-9340-f6779f9b6c0a.png",
+              "title": "Curso de Audio para Producciones Audiovisuales",
+              "url": "/clases/audio-produccion/",
+              "current": false
+            }]
+          }, {
+            "badge": "https://static.platzi.com/media/learningpath/badges/badge-fotografia.png",
+            "title": "Fotograf\u00eda Digital",
+            "level": "advanced",
+            "color": "#c54e00",
+            "description": "La fotograf\u00eda digital es la \u00fanica \u00e1rea del conocimiento que mezcla ciencia exacta, arte y tecnolog\u00eda para transmitir emociones y generar ingresos.",
+            "url": "/profesional-fotografia/",
+            "courses": [{
+              "badge": "https://static.platzi.com/media/achievements/badge-fotografia-d9a7b2a3-b724-45d2-bb68-26a184126b1b.png",
+              "title": "Curso de Fundamentos de Fotograf\u00eda",
+              "url": "/clases/fotografia/",
+              "current": false
+            }, {
+              "badge": "https://static.platzi.com/media/achievements/1260-96b9750a-e31f-4c0e-a6ca-fdacd94b38aa.png",
+              "title": "Curso de Introducci\u00f3n al Lenguaje Audiovisual",
+              "url": "/clases/lenguaje-audiovisual/",
+              "current": true
+            }, {
+              "badge": "https://static.platzi.com/media/achievements/badge-tecnicas-fotograficas-9808f4c7-d61f-4c58-ad24-00c60885e1f1.png",
+              "title": "Curso de T\u00e9cnicas Fotogr\u00e1ficas para Producto y Retrato en Redes Sociales",
+              "url": "/clases/fotografia-redes/",
+              "current": false
+            }]
+          }],
+          "project": {},
+          "topStudents": [],
+          "version": [],
+          "examUrl": "/clases/examen/b4fbbfca-82b8-4337-b512-59f4a70c4555/examen_usuario/",
+          "degreeUrl": "",
+          "nextCourse": {
+            "badge": "https://static.platzi.com/media/achievements/badge-produccion-audiovisual-255a80f6-2c64-492b-b29d-2c256558d231.png",
+            "title": "Curso de Introducci\u00f3n a la Producci\u00f3n Audiovisual Cinematogr\u00e1fica",
+            "url": "/clases/produccion-audiovisual-cinematografica/",
+            "current": false
+          },
+          "contentType": "video"
+        },
+        "concepts": [{
+          "id": 1913,
+          "title": "Introducci\u00f3n al lenguaje audiovisual",
+          "slug": "introduccion-al-lenguaje-audiovisual",
+          "materials": [{
+            "name": "Antes de comenzar",
+            "image": null,
+            "slug": "antes-de-comenzar",
+            "material_type": "lecture",
+            "active": true,
+            "duration": 120,
+            "required": false,
+            "id": 10681,
+            "url": "/clases/1260-lenguaje-audiovisual/10681-antes-de-comenzar/",
+            "date": "2018-04-10T13:03:31-05:00",
+            "percentage": 0,
+            "uploading": false,
+            "public": false,
+            "can_user_access": true,
+            "seen": true
+          }, {
+            "name": "Introducci\u00f3n al lenguaje audiovisual, caracter\u00edsticas y dimensiones",
+            "image": "https://mdstrm.com/thumbs/512e13acaca1ebcd2f000279/2018420/thumb_5ad9e3faccf7c543ec0f4d0e_original_206s.jpg",
+            "slug": "introduccion-al-lenguaje-audiovisual-caracteristic",
+            "material_type": "video",
+            "active": true,
+            "duration": 411,
+            "required": false,
+            "id": 10682,
+            "url": "/clases/1260-lenguaje-audiovisual/10682-introduccion-al-lenguaje-audiovisual-caracteristic/",
+            "date": "2018-04-10T13:22:51-05:00",
+            "percentage": 0,
+            "uploading": false,
+            "public": false,
+            "can_user_access": true,
+            "seen": true
+          }]
+        }, {
+          "id": 1914,
+          "title": "Aspecto morfol\u00f3gico",
+          "slug": "aspecto-morfologico",
+          "materials": [{
+            "name": "Aspecto morfol\u00f3gico e imagen",
+            "image": "https://mdstrm.com/thumbs/512e13acaca1ebcd2f000279/2018420/thumb_5ad9f3f0e904bf28207c0c8a_original_161s.jpg",
+            "slug": "aspecto-morfologico-e-imagen",
+            "material_type": "video",
+            "active": true,
+            "duration": 321,
+            "required": false,
+            "id": 10683,
+            "url": "/clases/1260-lenguaje-audiovisual/10683-aspecto-morfologico-e-imagen/",
+            "date": "2018-04-10T13:34:54-05:00",
+            "percentage": 0,
+            "uploading": false,
+            "public": false,
+            "can_user_access": true,
+            "seen": true
+          }, {
+            "name": "Funciones morfol\u00f3gicas de la imagen",
+            "image": null,
+            "slug": "funciones-morfologicas-de-la-imagen",
+            "material_type": "lecture",
+            "active": true,
+            "duration": 60,
+            "required": false,
+            "id": 10726,
+            "url": "/clases/1260-lenguaje-audiovisual/10726-funciones-morfologicas-de-la-imagen/",
+            "date": "2018-04-12T08:16:28-05:00",
+            "percentage": 0,
+            "uploading": false,
+            "public": false,
+            "can_user_access": true,
+            "seen": true
+          }, {
+            "name": "Caracter\u00edsticas de la imagen y aspectos sonoros",
+            "image": "https://mdstrm.com/thumbs/512e13acaca1ebcd2f000279/2018420/thumb_5ad9e53051446213cd254a1e_original_215s.jpg",
+            "slug": "caracteristicas-de-la-imagen-y-aspectos-sonoros",
+            "material_type": "video",
+            "active": true,
+            "duration": 429,
+            "required": false,
+            "id": 10684,
+            "url": "/clases/1260-lenguaje-audiovisual/10684-caracteristicas-de-la-imagen-y-aspectos-sonoros/",
+            "date": "2018-04-10T16:01:15-05:00",
+            "percentage": 0,
+            "uploading": false,
+            "public": false,
+            "can_user_access": true,
+            "seen": true
+          }]
+        }, {
+          "id": 1915,
+          "title": "Aspecto sint\u00e1ctico",
+          "slug": "aspecto-sintactico",
+          "materials": [{
+            "name": "Planos",
+            "image": "https://mdstrm.com/thumbs/512e13acaca1ebcd2f000279/2018420/thumb_5ad9e67385e9315cb31bf65e_original_285s.jpg",
+            "slug": "planos",
+            "material_type": "video",
+            "active": true,
+            "duration": 569,
+            "required": false,
+            "id": 10685,
+            "url": "/clases/1260-lenguaje-audiovisual/10685-planos/",
+            "date": "2018-04-10T16:02:18-05:00",
+            "percentage": 0,
+            "uploading": false,
+            "public": false,
+            "can_user_access": true,
+            "seen": true
+          }, {
+            "name": "\u00c1ngulos",
+            "image": "https://mdstrm.com/thumbs/512e13acaca1ebcd2f000279/2018420/thumb_5ad9e64517938e42e403a96f_original_130s.jpg",
+            "slug": "angulos",
+            "material_type": "video",
+            "active": true,
+            "duration": 260,
+            "required": false,
+            "id": 10686,
+            "url": "/clases/1260-lenguaje-audiovisual/10686-angulos/",
+            "date": "2018-04-10T16:04:04-05:00",
+            "percentage": 0,
+            "uploading": false,
+            "public": false,
+            "can_user_access": true,
+            "seen": true
+          }, {
+            "name": "Composici\u00f3n",
+            "image": "https://mdstrm.com/thumbs/512e13acaca1ebcd2f000279/2018420/thumb_5ad9e51951446213cd254a11_original_242s.jpg",
+            "slug": "composicion8756",
+            "material_type": "video",
+            "active": true,
+            "duration": 484,
+            "required": false,
+            "id": 10687,
+            "url": "/clases/1260-lenguaje-audiovisual/10687-composicion8756/",
+            "date": "2018-04-10T16:06:58-05:00",
+            "percentage": 0,
+            "uploading": false,
+            "public": false,
+            "can_user_access": true,
+            "seen": true
+          }, {
+            "name": "Profundidad de Campo y Distancia Focal",
+            "image": "https://mdstrm.com/thumbs/512e13acaca1ebcd2f000279/2018420/thumb_5ad9e5b492fb5d1f3d84436b_original_201s.jpg",
+            "slug": "profundidad-de-campo-y-distancia-focal",
+            "material_type": "video",
+            "active": true,
+            "duration": 402,
+            "required": false,
+            "id": 10688,
+            "url": "/clases/1260-lenguaje-audiovisual/10688-profundidad-de-campo-y-distancia-focal/",
+            "date": "2018-04-10T16:08:28-05:00",
+            "percentage": 0,
+            "uploading": false,
+            "public": false,
+            "can_user_access": true,
+            "seen": true
+          }, {
+            "name": "Ritmo",
+            "image": "https://mdstrm.com/thumbs/512e13acaca1ebcd2f000279/2018420/thumb_5ad9e6e7ab134d6dd63b025d_original_161s.jpg",
+            "slug": "ritmo5542",
+            "material_type": "video",
+            "active": true,
+            "duration": 322,
+            "required": false,
+            "id": 10689,
+            "url": "/clases/1260-lenguaje-audiovisual/10689-ritmo5542/",
+            "date": "2018-04-10T16:09:30-05:00",
+            "percentage": 0,
+            "uploading": false,
+            "public": false,
+            "can_user_access": true,
+            "seen": true
+          }, {
+            "name": "Iluminaci\u00f3n",
+            "image": "https://mdstrm.com/thumbs/512e13acaca1ebcd2f000279/thumb_5c65d15c976d9b0699882ff2_5c65d15c976d9b0699882ff6_42s.jpg",
+            "slug": "iluminacion2800",
+            "material_type": "video",
+            "active": true,
+            "duration": 417,
+            "required": false,
+            "id": 10690,
+            "url": "/clases/1260-lenguaje-audiovisual/10690-iluminacion2800/",
+            "date": "2018-04-10T16:10:03-05:00",
+            "percentage": 0,
+            "uploading": false,
+            "public": false,
+            "can_user_access": true,
+            "seen": true
+          }, {
+            "name": "Color",
+            "image": "https://mdstrm.com/thumbs/512e13acaca1ebcd2f000279/2018420/thumb_5ad9e74685e9315cb31bf6a6_original_184s.jpg",
+            "slug": "color8420",
+            "material_type": "video",
+            "active": true,
+            "duration": 367,
+            "required": false,
+            "id": 10691,
+            "url": "/clases/1260-lenguaje-audiovisual/10691-color8420/",
+            "date": "2018-04-10T16:10:24-05:00",
+            "percentage": 0,
+            "uploading": false,
+            "public": false,
+            "can_user_access": true,
+            "seen": true
+          }, {
+            "name": "Movimientos de c\u00e1mara",
+            "image": "http://img.youtube.com/vi/7Vpi4a1l8f8/hqdefault.jpg",
+            "slug": "movimientos-de-camara",
+            "material_type": "video",
+            "active": true,
+            "duration": 0,
+            "required": false,
+            "id": 10692,
+            "url": "/clases/1260-lenguaje-audiovisual/10692-movimientos-de-camara/",
+            "date": "2018-04-10T16:11:27-05:00",
+            "percentage": 0,
+            "uploading": false,
+            "public": false,
+            "can_user_access": true,
+            "seen": true
+          }]
+        }, {
+          "id": 1916,
+          "title": "Aspecto Sem\u00e1ntico",
+          "slug": "aspecto-semantico",
+          "materials": [{
+            "name": "Aspecto sem\u00e1ntico del Lenguaje Audiovisual",
+            "image": null,
+            "slug": "aspecto-semantico-del-lenguaje-audiovisual",
+            "material_type": "lecture",
+            "active": true,
+            "duration": 180,
+            "required": false,
+            "id": 10695,
+            "url": "/clases/1260-lenguaje-audiovisual/10695-aspecto-semantico-del-lenguaje-audiovisual/",
+            "date": "2018-04-10T16:25:10-05:00",
+            "percentage": 0,
+            "uploading": false,
+            "public": false,
+            "can_user_access": true,
+            "seen": true
+          }, {
+            "name": "Recursos Visuales y ling\u00fc\u00edsticos",
+            "image": "https://mdstrm.com/thumbs/512e13acaca1ebcd2f000279/2018420/thumb_5ad9e5c285e9315cb31bf63d_original_169s.jpg",
+            "slug": "recursos-visuales-y-linguisticos",
+            "material_type": "video",
+            "active": true,
+            "duration": 337,
+            "required": false,
+            "id": 10693,
+            "url": "/clases/1260-lenguaje-audiovisual/10693-recursos-visuales-y-linguisticos/",
+            "date": "2018-04-10T16:17:14-05:00",
+            "percentage": 0,
+            "uploading": false,
+            "public": false,
+            "can_user_access": true,
+            "seen": true
+          }]
+        }, {
+          "id": 1917,
+          "title": "Principios b\u00e1sicos de edici\u00f3n",
+          "slug": "principios-basicos-de-edicion",
+          "materials": [{
+            "name": "Efecto Kuleshov",
+            "image": "http://img.youtube.com/vi/VdA6z2dlDIY/hqdefault.jpg",
+            "slug": "efecto-kuleshov",
+            "material_type": "video",
+            "active": true,
+            "duration": 0,
+            "required": false,
+            "id": 10694,
+            "url": "/clases/1260-lenguaje-audiovisual/10694-efecto-kuleshov/",
+            "date": "2018-04-10T16:20:00-05:00",
+            "percentage": 0,
+            "uploading": false,
+            "public": false,
+            "can_user_access": true,
+            "seen": true
+          }, {
+            "name": "Glosario de t\u00e9rminos",
+            "image": null,
+            "slug": "glosario-de-terminos",
+            "material_type": "lecture",
+            "active": true,
+            "duration": 300,
+            "required": false,
+            "id": 10696,
+            "url": "/clases/1260-lenguaje-audiovisual/10696-glosario-de-terminos/",
+            "date": "2018-04-10T16:31:26-05:00",
+            "percentage": 0,
+            "uploading": false,
+            "public": false,
+            "can_user_access": true,
+            "seen": true
+          }]
+        }],
+        "conceptsProgress": [{
+          "materialId": 10682,
+          "secondsSeen": 4,
+          "percentage": 0
+        }, {
+          "materialId": 10686,
+          "secondsSeen": 0,
+          "percentage": 0
+        }, {
+          "materialId": 10689,
+          "secondsSeen": 0,
+          "percentage": 0
+        }, {
+          "materialId": 10691,
+          "secondsSeen": 0,
+          "percentage": 0
+        }, {
+          "materialId": 10693,
+          "secondsSeen": 0,
+          "percentage": 0
+        }, {
+          "materialId": 10683,
+          "secondsSeen": 0,
+          "percentage": 0
+        }, {
+          "materialId": 10684,
+          "secondsSeen": 0,
+          "percentage": 0
+        }]
+      },
+      "initialProps": {
+        "messages": {
+          "modal.deleteConcept.title": "\u00bfQuieres eliminar este concepto y todos los materiales que tiene?",
+          "modal.deleteConcept.yes": "Si, eliminar",
+          "modal.deleteConcept.no": "No",
+          "modal.deleteConcept.loading": "Borrando concepto",
+          "modal.deleteConcept.error": "Ha ocurrido un error",
+          "modal.deleteConcept.sub": "Eliminar concepto",
+          "QuestionButton-send": "Enviar",
+          "QuestionComplete-title": "Completa tu perfil y obten 50 puntos",
+          "QuestionComplete-editProfile": "Edita tu perfil",
+          "QuestionContent-title": "\u00bfCu\u00e1l es tu nivel de estudio?",
+          "QuestionContent-desc": "Te servir\u00e1 para puntuar en las ofertas laborales",
+          "QuestionFinish-title": "Gracias por responder la pregunta",
+          "QuestionGender-title": "\u00bfCu\u00e1l es tu g\u00e9nero?",
+          "QuestionInput-title": "Seguro tienes proyectos de los cuales te sientes orgulloso compartelo con la comunidad:",
+          "QuestionFinish-complete": "Completado",
+          "QuestionFinish-edit": "Editar tu Perfil",
+          "QuestionSelection-data-never": "Nunca",
+          "QuestionSelection-data-littlebit": "Poco",
+          "QuestionSelection-data-always": "Siempre",
+          "QuestionsPoints_obtain": "Obt\u00e9n 2",
+          "QuestionsPoints_content": "al responder esta pregunta",
+          "QuestionStar-title": "\u00bfCu\u00e1nto te interesa el desarrollo?",
+          "QuestionInput-url": "Agregar URL de tu portafolio",
+          "QuestionSelection-title": "\u00bfCon qu\u00e9 frecuencia usas los conceptos de marketing?",
+          "AddProject-text": "Felicidades por llegar hasta aqu\u00ed. Comparte lo que aprendiste de este curso.",
+          "AddProject-cta": "Subir un proyecto a mi portafolio",
+          "congratulations": "\u00a1Felicitaciones! Completaste",
+          "learning": "\u00a1Vaya! Ahora sabes",
+          "rate": "Califica este curso",
+          "content": "Contenido",
+          "teacher": "Profesor",
+          "testimony": "Cu\u00e9ntale a la comunidad qu\u00e9 fue lo mejor de este curso",
+          "send": "Enviar",
+          "OpenClass": {
+            "cta": "Ver esta clase"
+          },
+          "courseBanner": {
+            "showDiscussions": "Ver discusiones",
+            "edit": "Editar curso",
+            "outstandingStudents": "Alumnos destacados",
+            "search": "Buscar en este curso",
+            "moreReviews": "Leer m\u00e1s reviews",
+            "tooltipFirst": "Tu puedes ser el pr\u00f3ximo alumno destacado.",
+            "tooltipSecond": "Cada semana, tus aportes, respuestas y ex\u00e1men aprobado suman a tu PlatziRank.",
+            "found": "Se encontr\u00f3",
+            "foundPlural": "Se encontraron",
+            "resultsPlural": "resultados",
+            "results": "resultado"
+          },
+          "header": {
+            "link": "Respuestas de"
+          },
+          "popups": {
+            "login": {
+              "welcome": "Bienvenido a Platzi",
+              "loginFacebook": "Ingresa con facebook",
+              "loginTwitter": "Ingresa con Twitter",
+              "loginMail": "\u00bfIngresas con email?",
+              "haveAccount": "\u00bfA\u00fan no tienes cuenta?",
+              "signup": "Reg\u00edstrate aqu\u00ed",
+              "privacy": {
+                "part1": "Valoramos t",
+                "part2": "privacidad",
+                "part3": "como si fuera nuestra"
+              },
+              "terms": {
+                "part1": "Ante cualquier duda, nuestros",
+                "part2": "Terminos de servicio"
+              }
+            },
+            "pay": {
+              "buyPlan": "Comprar Plan",
+              "monthly": {
+                "label": "En <b>12 pagos</b> sin intereses"
+              }
+            }
+          },
+          "form": {
+            "placeholder": "Escribe tu pregunta",
+            "details": {
+              "show": "Agregar detalles",
+              "hide": "Sin detalles",
+              "title": "Detalles",
+              "text": "Las preguntas m\u00e1s concretas obtienen mejores respuestas"
+            },
+            "helpbar": {
+              "markdown": "Markdown",
+              "preview": "Vista previa"
+            },
+            "editor": {
+              "placeholder": "Complementa tu pregunta, agrega c\u00f3digo o im\u00e1genes",
+              "hide": "Esconder",
+              "send": "Enviando",
+              "edit": "Editar",
+              "preview": "Vista previa",
+              "expand": "Expandir",
+              "contract": "Contraer",
+              "bold": "Negrita",
+              "italic": "Cursiva",
+              "underline": "Subrayado",
+              "heading": "Encabezado",
+              "code": "Insertar c\u00f3digo",
+              "quote": "Cita",
+              "link": "Enlace",
+              "unorderedList": "Lista desordenada",
+              "orderedList": "Lista ordenada",
+              "image": "Imagen",
+              "youtube": "Youtube",
+              "uploading": "Subiendo imagen"
+            },
+            "bottom": {
+              "title": "T\u00edtulo"
+            },
+            "send": "Enviar pregunta"
+          },
+          "filter": {
+            "best": "Mejores",
+            "new": "Nuevas",
+            "top": "Top",
+            "unanswered": "Sin Respuesta",
+            "stared": "Mis discusiones",
+            "title": "Filtrar por:"
+          },
+          "discussion": {
+            "answers": "respuestas",
+            "answer": "respuesta",
+            "reply": "Responder",
+            "delete": "Eliminar"
+          },
+          "noDiscussion": {
+            "great": "\u00a1Genial!",
+            "firstDiscussion": "Puedes ser el primero en preguntar"
+          },
+          "errors": {
+            "addDiscussion": "Hubo un error al crear la discusi\u00f3n. Intenta de nuevo.",
+            "changeFilter": "Hubo un error al cambiar de filtro. Intenta de nuevo.",
+            "nextPage": "Hubo un error cargando m\u00e1s discusiones. Intenta de nuevo.",
+            "toggleStar": "Hubo un error al marcar la discusi\u00f3n. Intenta de nuevo.",
+            "deleteDiscussion": "Hubo un error al borrar la discusi\u00f3n.Intenta de nuevo."
+          },
+          "contributions": {
+            "title": "Tutoriales de los estudiantes",
+            "addContribution": {
+              "title": "\u00bfQuieres compartir tus conocimientos?",
+              "description": "Puedes escribir un art\u00edculo o compartir un enlace",
+              "button": "Crear tutoriales"
+            },
+            "empty": {
+              "title": "\u00a1Genial!",
+              "description": "Puedes ser el primero en mandar un tutorial"
+            }
+          },
+          "switchPanel": {
+            "label": "Ver por:",
+            "materials": "Temario",
+            "contributions": "Tutoriales",
+            "news": "Nuevos",
+            "wantToShare": "\u00bfQuieres compartir tus conocimientos?",
+            "sendContribution": "Crea un tutorial"
+          },
+          "countdown": {
+            "days": {
+              "plural": "D\u00edas",
+              "singular": "D\u00eda"
+            },
+            "hours": "Hor",
+            "minutes": "Min",
+            "seconds": "Seg"
+          },
+          "comments": {
+            "getMore": "Ver todas las respuestas",
+            "points": "Puntos"
+          },
+          "materials": {
+            "uploading": "En proceso",
+            "takeExam": {
+              "title": "Examen de certificaci\u00f3n",
+              "description": "Tienes varios intentos",
+              "button": "T\u00f3malo ahora"
+            },
+            "exam": {
+              "take": {
+                "title": "Examen de certificaci\u00f3n",
+                "description": "Tienes varios intentos",
+                "button": "T\u00f3malo ahora",
+                "titleConcept": "Quiz"
+              },
+              "approved": {
+                "title": "\u00a1Ya aprobaste tu examen de certificaci\u00f3n!",
+                "titleConcept": "\u00a1Ya aprobaste el Quiz del concepto!",
+                "description": "Descargar tu certificado desde <em>Mi Perfil</em>",
+                "score": "Tu nota",
+                "qualify": "Califica este curso"
+              },
+              "countdown": {
+                "title": "Examen de certificaci\u00f3n",
+                "titleConcept": "Quiz del concepto",
+                "description": "Tienes una oportunidad cada 6 horas \u00a1No te rindas!",
+                "timer": {
+                  "label": "Int\u00e9ntalo de nuevo"
+                }
+              }
+            },
+            "meta": {
+              "time": {
+                "minute": "minuto",
+                "minutes": "minutos"
+              },
+              "watchTime": "Lo ves en",
+              "readTime": "Lo lees en"
+            }
+          },
+          "orgs": {
+            "buttons": {
+              "addModule": "Agregar m\u00f3dulo",
+              "addMaterial": "Agregar material",
+              "editCourse": "Editar curso"
+            }
+          },
+          "outstandings": {
+            "label": "Destacados:"
+          },
+          "noMaterial": "El material del curso estar\u00e1 disponible en:",
+          "liveBar": {
+            "atLive": "Ya estamos en vivo",
+            "getInNow": "entra ahora"
+          },
+          "nextLive": {
+            "schedules": "Horarios",
+            "nextLive": "La pr\u00f3xima sesi\u00f3n en vivo de este curso ser\u00e1 el",
+            "countDown": {
+              "days": {
+                "plural": "D\u00edas",
+                "singular": "D\u00eda"
+              },
+              "hours": "Hor",
+              "mins": "Min",
+              "segs": "Buscar"
+            },
+            "startsIn": "Inicia en:"
+          },
+          "timeline.outsandingStudents": "Alumnos destacados:",
+          "timeline.learningPaths.title": "Este curso es parte de la ruta de:",
+          "timeline.learningPaths.text": "Ruta de aprendizaje",
+          "timeline.learningPaths.here": "T\u00fa est\u00e1s aqu\u00ed",
+          "timeline.learningPaths.know": "Conocer toda la ruta de aprendizaje",
+          "timeline.admin.addModule": "+ Agregar m\u00f3dulo",
+          "timeline.admin.addMaterial": "+ Agregar material",
+          "timeline.exam.take": "Presenta el examen",
+          "timeline.course.by": "Por: ",
+          "timeline.learningPath.check": "Ver la ruta de aprendizaje",
+          "timeline.course.progress": "Progreso del curso:",
+          "timeline.course.contents": "contenidos",
+          "timeline.course.project": "Proyecto del curso",
+          "timeline.course.version": "Versi\u00f3n del curso:",
+          "timeline.tutorials.message": "Es la oportunidad de ayudar a tus compa\u00f1eros con tu conocimiento",
+          "timeline.tutorials.create": "Crea un tutorial",
+          "timeline.course.exclusiveExpert": "Contenido no disponible",
+          "timeline.class.checkSeen": "Marcar como vista",
+          "timeline.class.checkUnSeen": "Marcar como no vista",
+          "timeline.nextCourseTitle": "Continua aprendiendo con:",
+          "timeline.exam.success": "<strong>\u00a1FELICIDADES!</strong> Acabas de dar un gran paso en tu carrera profesional",
+          "timeline.course.uploading.material": "Esta clase estar\u00e1 disponible pr\u00f3ximamente"
+        },
+        "locales": "es"
+      }
+    };
+  </script>
+  <script type="text/javascript">
+    window.ga('platziFull.send', 'event', 'Timeline', 'impression', 'El usuario entro al timeline del curso');
+  </script>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <script src="https://d1bfq8j2etxnj6.cloudfront.net/platzi/sp/adobe_es5.js"></script>
+  <script type="text/javascript" src="https://static.platzi.com/static/js/dll/modules.7ca3a56be32f41e0cd86.js.gz">
+  </script>
+  <script type="text/javascript" src="https://static.platzi.com/static/js/b/timeline-v2.be21f79f4c00f6b118e8.js.gz">
+  </script>
+  <script type="text/javascript"
+    src="https://static.platzi.com/static/js/b/past-due-notification.be21f79f4c00f6b118e8.js.gz"></script>
+  <script type="text/javascript" src="https://static.platzi.com/static/js/core/header-v2.55cf4122d4a4591da8ac.js.gz">
+  </script>
+  <script type="text/javascript" src="https://static.platzi.com/static/js/d/contact-modal.f5360164282fd7c0548c.js.gz">
+  </script><!-- Hotjar Tracking Code for www.platzi.com -->
+  <script>
+    ga('platziFull.set', 'dimension2', 'annual_subscription');
+
+    ga('platziPlatformES.set', 'dimension1', 'annual_subscription');
+
+    (function (h, o, t, j, a, r) {
+      h.hj = h.hj || function () {
+        (h.hj.q = h.hj.q || []).push(arguments)
+      };
+      h._hjSettings = {
+        hjid: 430680,
+        hjsv: 5
+      };
+      a = o.getElementsByTagName('head')[0];
+      r = o.createElement('script');
+      r.async = 1;
+      r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+      a.appendChild(r);
+    })(window, document, '//static.hotjar.com/c/hotjar-', '.js?sv=');
+  </script><!-- Google Rich Card -->
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Organization",
+      "name": "Platzi",
+      "url": "https://platzi.com/",
+      "description": "Aprende de expertos en programación, diseño, marketing, startups, video y web. Suscríbete hoy.",
+      "foundingDate": "2013-01-01",
+      "founders": [{
+          "@type": "Person",
+          "name": "John Freddy Vega"
+        },
+        {
+          "@type": "Person",
+          "name": "Christian Van Der Henst"
+        }
+      ],
+      "sameAs": [
+        "https://www.facebook.com/platzi/",
+        "https://twitter.com/Platzi",
+        "https://www.youtube.com/channel/UC55-mxUj5Nj3niXFReG44OQ",
+        "https://www.linkedin.com/school/2822346"
+      ]
+    }
+  </script><!-- Google Tag Manager --><noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-KFRRSV"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <script>
+    (function (w, d, s, l, i) {
+      w[l] = w[l] || [];
+      w[l].push({
+        'gtm.start': new Date().getTime(),
+        event: 'gtm.js'
+      });
+      var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != 'dataLayer' ? '&l=' + l : '';
+      j.async = true;
+      j.src = '//www.googletagmanager.com/gtm.js?id=' + i + dl;
+      f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-KFRRSV');
+  </script><!-- End Google Tag Manager -->
+</body>
+
+</html>
