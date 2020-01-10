@@ -1,0 +1,2 @@
+def returi():
+	return ['Bienvenido al Curso de Diseño de Interfaces Moviles ','Introducción al Diseño Mobile','Lineamientos','Introducción al Proyecto','Web','Metodología','iOS','Android','Notificaciones','Prototipos','Handoff','Conclusiones']
